@@ -156,17 +156,17 @@ expo i 5-tenedores
 
 Nos saldra el interactive mode dandonos a elegiar algunas opciones
 
-### Que template queremos usar
+#### Que template queremos usar
 
 Para este proyecto usaremos __blank__ que es el más básico de todos ya que escribiremos la mayor pate del código por nuestra cuenta a modo de práctica :)
 
-### Nombre del proyecto
+#### Nombre del proyecto
 
 Simplemente nos ponemos a escribir
 
 Usaremos 5 Tenedores ya que crearemos una app de restautantes
 
-### Manejador de dependencias
+#### Manejador de dependencias
 
 Si tenemos yarn instalado nos preguntara si queremoes que este sea el manejador de dependecias
 
