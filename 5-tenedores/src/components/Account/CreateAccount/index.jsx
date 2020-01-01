@@ -5,7 +5,8 @@ import styles from './styles'
 
 const CreateAccount = () => (
   <Text style={styles.textRegister}>
-      ¿Aún no tienes una cuenta?
+    ¿Aún no tienes una cuenta?
+    {' '}
     <Text
       style={styles.btnRegister}
       onPress={() => window.alert('Navegando al formulario de registro')}
