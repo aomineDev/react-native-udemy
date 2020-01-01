@@ -1,6 +1,6 @@
-import React from './node_modules/react'
+import React from 'react'
 import { ScrollView, View, Text, Image } from 'react-native'
-import { Divider } from './node_modules/react-native-elements'
+import { Divider } from 'react-native-elements'
 
 import CreateAccount from '../CreateAccount'
 
