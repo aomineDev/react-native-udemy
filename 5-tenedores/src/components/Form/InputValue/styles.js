@@ -1,9 +1,12 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  divider: {
-    backgroundColor: '#00a680',
-    margin: 40
+  inputForm: {
+    width: '100%',
+    marginTop: 20
+  },
+  iconRight: {
+    color: '#c1c1c1'
   }
 })
 

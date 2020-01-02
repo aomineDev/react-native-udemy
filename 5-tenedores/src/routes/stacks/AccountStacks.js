@@ -4,7 +4,7 @@ import AccountScreen from '../../screens/Account'
 import LoginScreen from '../../screens/Account/Login'
 import RegisterScreen from '../../screens/Account/Register'
 
-import { transitionScreen } from './config/transitionScreen'
+import transitionScreen from './config/transitionScreen'
 
 const AccountScreenStacks = createStackNavigator(
   {

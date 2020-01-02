@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  divider: {
-    backgroundColor: '#00a680',
-    margin: 40
+  logo: {
+    width: '100%',
+    height: 150,
+    marginTop: 20
   }
 })
 

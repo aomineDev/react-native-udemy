@@ -3,13 +3,13 @@ import { Text } from 'react-native'
 
 import styles from './styles'
 
-const CreateAccount = () => (
+const CreateAccount = ({ createAccountHandler }) => (
   <Text style={styles.textRegister}>
     ¿Aún no tienes una cuenta?
     {' '}
     <Text
       style={styles.btnRegister}
-      onPress={() => window.alert('Navegando al formulario de registro')}
+      onPress={createAccountHandler}
     >
       Regístrate
     </Text>

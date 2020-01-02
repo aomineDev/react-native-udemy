@@ -1,6 +1,6 @@
 import { Animated, Easing } from 'react-native'
 
-export const transitionScreen = () => {
+const transitionScreen = () => {
   return {
     transitionSpec: {
       duration: 500,
@@ -22,3 +22,5 @@ export const transitionScreen = () => {
     }
   }
 }
+
+export default transitionScreen
