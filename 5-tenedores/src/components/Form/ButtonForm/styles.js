@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
   },
   btnRegister: {
     backgroundColor: '#00a680'
+  },
+  btnRegisterDisabled: {
+    backgroundColor: '#00a680'
   }
 })
 

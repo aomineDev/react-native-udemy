@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements'
 
 import styles from './styes'
 
-const userGuest = ({ btnHandler }) => (
+const userGuest = ({ onPress }) => (
   <ScrollView
     style={styles.viewBody}
     centerContent
@@ -21,7 +21,7 @@ const userGuest = ({ btnHandler }) => (
         title='Ver tu perfil'
         buttonStyle={styles.btnStyle}
         containerStyle={styles.btnContainer}
-        onPress={btnHandler}
+        onPress={onPress}
       />
     </View>
   </ScrollView>

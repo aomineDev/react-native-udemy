@@ -5,7 +5,7 @@ import SignInForm from '../../components/Account/SignInForm'
 
 const SignIn = ({ navigation }) => (
   <SignInForm
-    createAccountHandler={() => navigation.navigate('Register')}
+    onPress={() => navigation.navigate('Register')}
   />
 )
 
