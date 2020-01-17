@@ -1,16 +1,17 @@
 import React from 'react'
-import { View, Text, ScrollView, Image } from 'react-native'
+import { ScrollView, View, Text, Image } from 'react-native'
 import { Button } from 'react-native-elements'
+import { withNavigation } from 'react-navigation'
 
 import styles from './styes'
 
-const userGuest = ({ onPress }) => (
+const UserGuest = ({ navigation }) => (
   <ScrollView
     style={styles.viewBody}
     centerContent
   >
     <Image
-      source={require('../../../../assets/img/account/user-guest.jpg')}
+      source={require('../../../assets/img/account/user-guest.jpg')}
       style={styles.image}
       resizeMode='contain'
     />
@@ -21,10 +22,10 @@ const userGuest = ({ onPress }) => (
         title='Ver tu perfil'
         buttonStyle={styles.btnStyle}
         containerStyle={styles.btnContainer}
-        onPress={onPress}
+        onPress={() => navigation.navigate('Login')}
       />
     </View>
   </ScrollView>
 )
 
-export default userGuest
+export default withNavigation(UserGuest)

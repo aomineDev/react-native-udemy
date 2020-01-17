@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import globalStyles from '../../../styles/globalStyles'
+import globalStyles from '../../../assets/styles/globalStyles'
 
 const styles = StyleSheet.create({
   formContainer: {

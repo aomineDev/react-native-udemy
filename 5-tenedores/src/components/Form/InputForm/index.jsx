@@ -6,6 +6,11 @@ import styles from './styles'
 const InputForm = ({ placeholder, value, onChange, disabled, isPassword, iconName }) => {
   const [hidePassword, setHidePassword] = useState(true)
 
+  const handlePress = () => {
+    if (isPassword) return setHidePassword(!hidePassword)
+    return null
+  }
+
   return (
     <Input
       containerStyle={styles.inputForm}
@@ -17,9 +22,9 @@ const InputForm = ({ placeholder, value, onChange, disabled, isPassword, iconNam
       secureTextEntry={isPassword && hidePassword}
       rightIcon={
         <Icon
-          name={isPassword ? (hidePassword ? iconName[0] : iconName[1]) : iconName}
+          name={!isPassword ? iconName : (hidePassword ? iconName[0] : iconName[1])}
           iconStyle={styles.iconRight}
-          onPress={() => setHidePassword(!hidePassword)}
+          onPress={handlePress}
         />
       }
     />

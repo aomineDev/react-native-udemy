@@ -4,7 +4,7 @@ import { Overlay } from 'react-native-elements'
 
 import styles from './styles'
 
-const Loading = ({ isVisible, text }) => {
+const LoadingPage = ({ isVisible, text }) => {
   return (
     <Overlay
       isVisible={isVisible}
@@ -19,4 +19,4 @@ const Loading = ({ isVisible, text }) => {
   )
 }
 
-export default Loading
+export default LoadingPage

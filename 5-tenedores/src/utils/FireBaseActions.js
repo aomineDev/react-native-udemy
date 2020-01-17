@@ -6,7 +6,7 @@ export const onSignUp = (email, password) => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => resolve('Usuario creado correctamente'))
-      .catch(() => reject(new Error('Error al crear la cuenta intentelo más tarde')))
+      .catch((error) => reject(error))
   })
 }
 
