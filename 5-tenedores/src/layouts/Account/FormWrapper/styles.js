@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   formContainer: {
     ...globalStyles.container,
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30
   }

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { View, Text } from 'react-native'
 
-import { onSignOut } from '../../../utils/FireBaseActions'
+import { onSignOut } from '../../../utils/FiresabeAuth'
 
 import SignOutButton from '../../../components/Account/SignOutButton'
 

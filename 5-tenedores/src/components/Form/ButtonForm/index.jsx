@@ -3,7 +3,7 @@ import { Button } from 'react-native-elements'
 
 import styles from './styles'
 
-const ButtonForm = ({ title, onSubmit, disabled }) => (
+const ButtonForm = ({ title, onSubmit, disabled, loading }) => (
   <Button
     containerStyle={styles.btnContainerRegister}
     buttonStyle={styles.btnRegister}
@@ -11,7 +11,7 @@ const ButtonForm = ({ title, onSubmit, disabled }) => (
     onPress={onSubmit}
     disabled={disabled}
     disabledStyle={styles.btnRegisterDisabled}
-    loading={disabled}
+    loading={loading}
   />
 )
 

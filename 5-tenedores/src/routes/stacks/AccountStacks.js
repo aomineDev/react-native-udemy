@@ -17,13 +17,13 @@ const AccountScreenStacks = createStackNavigator(
     Login: {
       screen: LoginScreen,
       navigationOptions: () => ({
-        title: 'Login'
+        title: 'Ingresa'
       })
     },
     Register: {
       screen: RegisterScreen,
       navigationOptions: () => ({
-        title: 'Register'
+        title: 'Regístrate'
       })
     }
   },
