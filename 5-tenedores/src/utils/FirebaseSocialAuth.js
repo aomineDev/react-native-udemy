@@ -19,8 +19,12 @@ export const onSignInWithFacebook = async (handleSignIn, onLogged, toastRef) => 
         .auth()
         .signInWithCredential(credentials)
         .then(() => onLogged())
-        .catch(() => {
-          toastRef.current.show('Ocurrio un error, intentelo más tarde')
+        .catch((error) => {
+          if (error.code === 'auth/account-exists-with-different-credential') {
+            toastRef.current.show('Este email ya esta en uso con un diferente proveedor')
+          } else {
+            toastRef.current.show('Ocurrio un error, intentelo más tarde')
+          }
           handleSignIn(false)
         })
     } else {
