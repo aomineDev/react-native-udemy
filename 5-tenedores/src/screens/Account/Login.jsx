@@ -1,24 +1,24 @@
 import React, { useState, useRef } from 'react'
 import { View } from 'react-native'
-import { Divider } from 'react-native-elements'
 import { withNavigation } from 'react-navigation'
 
-import { onSignIn } from '../../../utils/FiresabeAuth'
-import { onSignInWithFacebook, onSignInWithGoogle } from '../../../utils/FirebaseSocialAuth'
+import { onSignIn } from '../../utils/FiresabeAuth'
+import { onSignInWithFacebook, onSignInWithGoogle } from '../../utils/FirebaseSocialAuth'
 
-import LogoWrapper from '../../../layouts/Account/LogoWrapper'
-import FormWrapper from '../../../layouts/Account/FormWrapper'
+import LogoWrapper from '../../layouts/Account/LogoWrapper'
+import FormWrapper from '../../layouts/Account/FormWrapper'
 
-import SignInForm from '../../../components/Account/SignInForm'
-import CreateAccount from '../../../components/Account/CreateAccount'
-import SocialSignInButton from '../../../components/Account/SocialSignInButton'
-import Toast from '../../../components/shared/Toast'
+import SignInForm from '../../components/Account/SignInForm'
+import CreateAccount from '../../components/Account/CreateAccount'
+import SocialSignInButton from '../../components/Account/SocialSignInButton'
+import Divider from '../../components/shared/Divider'
+import Toast from '../../components/shared/Toast'
 
-import globalStyles from '../../../assets/styles/globalStyles'
-import styles from './styles'
+import globalStyles from '../../assets/styles/globalStyles'
 
 const Login = ({ navigation }) => {
   const toastRef = useRef()
+
   const [isDisabled, setIsDisabled] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingFacebook, setIsLoadingFacebook] = useState(false)
@@ -56,7 +56,7 @@ const Login = ({ navigation }) => {
           onPress={() => navigation.navigate('Register')}
         />
       </View>
-      <Divider style={styles.divider} />
+      <Divider />
       <View style={globalStyles.container}>
         <SocialSignInButton
           title='Iniciar Sesión con Facebook'
@@ -66,14 +66,17 @@ const Login = ({ navigation }) => {
           disabled={isDisabled}
           loading={isLoadingFacebook}
           handleSignIn={handleSignInWithFacebook}
+          toastRef={toastRef}
         />
         <SocialSignInButton
           title='Iniciar Sesión con Google'
           type='google'
           onSignIn={onSignInWithGoogle}
+          onLogged={() => navigation.navigate('Account')}
           disabled={isDisabled}
           loading={isLoadingGoogle}
           handleSignIn={handleSignInWithGoogle}
+          toastRef={toastRef}
         />
       </View>
       <Toast

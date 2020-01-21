@@ -1,8 +1,8 @@
 import React from 'react'
-import ToastCompoment from 'react-native-easy-toast'
+import Toast from 'react-native-easy-toast'
 
-const Toast = ({ toastRef, position }) => (
-  <ToastCompoment
+const ToastCompoment = ({ toastRef, position }) => (
+  <Toast
     ref={toastRef}
     style={{ borderRadius: 50 }}
     position={position}
@@ -10,4 +10,4 @@ const Toast = ({ toastRef, position }) => (
   />
 )
 
-export default Toast
+export default ToastCompoment

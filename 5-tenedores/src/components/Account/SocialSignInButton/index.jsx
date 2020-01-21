@@ -1,9 +1,9 @@
 import React from 'react'
 import { SocialIcon } from 'react-native-elements'
 
-const SocialSignInButton = ({ title, type, onSignIn, onLogged, disabled, loading, handleSignIn }) => {
+const SocialSignInButton = ({ title, type, onSignIn, onLogged, disabled, loading, handleSignIn, toastRef }) => {
   const handlePress = () => {
-    onSignIn(handleSignIn, onLogged)
+    onSignIn(handleSignIn, onLogged, toastRef)
   }
 
   return (

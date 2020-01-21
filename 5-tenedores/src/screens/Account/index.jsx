@@ -14,7 +14,7 @@ const Account = () => {
     })
   }, [])
 
-  if (login === null) return <LoadingPage isVisible text='Cargando...' />
+  if (login === null) return <LoadingPage text='Cargando...' />
 
   return login ? <UserLogged /> : <UserGuest />
 }

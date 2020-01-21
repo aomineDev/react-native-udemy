@@ -1,44 +1,57 @@
 import * as firebase from 'firebase/app'
-
-// facebook
 import * as Facebook from 'expo-facebook'
-import { FacebookApi } from '../config/social'
-import { Alert } from 'react-native'
+import * as Google from 'expo-google-app-auth'
+import { FacebookApi, GoogleApi } from '../config/social'
 
-export const onSignInWithFacebook = async (handleSignIn, onLogged) => {
+export const onSignInWithFacebook = async (handleSignIn, onLogged, toastRef) => {
   try {
-    await Facebook.initializeAsync(FacebookApi.app_id)
+    await Facebook.initializeAsync(FacebookApi.appId)
     const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-      permissions: ['public_profile', 'email'],
-      behavior: 'web'
+      permissions: FacebookApi.permissions
     })
 
-    console.log('type', type)
-    console.log('token', token)
     if (type === 'success') {
       handleSignIn(true)
-      const response = await window.fetch(`https://graph.facebook.com/me?access_token=${token}`)
-      Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`)
-      const credentials = await firebase.auth.FacebookAuthProvider.credential(token)
-      console.log(credentials)
+
+      const credentials = firebase.auth.FacebookAuthProvider.credential(token)
+
+      firebase
+        .auth()
+        .signInWithCredential(credentials)
+        .then(() => onLogged())
+        .catch(() => {
+          toastRef.current.show('Ocurrio un error, intentelo más tarde')
+          handleSignIn(false)
+        })
     } else {
       handleSignIn(false)
     }
   } catch (error) {
-    window.alert(`Facebook Login Error: ${error.message}`)
-    console.log(error)
+    toastRef.current.show(`Facebook Login Error: ${error.message}`)
   }
 }
 
-export const onSignInWithGoogle = async (handleSignIn, onLogged) => {
+export const onSignInWithGoogle = async (handleSignIn, onLogged, toastRef) => {
   try {
-    handleSignIn(true)
-    window.setTimeout(() => {
-      handleSignIn(false)
-    }, 3000)
-    console.log('testeando')
+    const { type, idToken, accessToken } = await Google.logInAsync(GoogleApi.config)
+
+    if (type === 'success') {
+      handleSignIn(true)
+
+      const credentials = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken)
+
+      firebase
+        .auth()
+        .signInWithCredential(credentials)
+        .then(() => onLogged())
+        .catch(() => {
+          toastRef.current.show('Ocurrio un error, intentelo más tarde')
+          handleSignIn(false)
+        })
+    } else {
+      toastRef.current.show('Ocurrio un error, intentelo más tarde')
+    }
   } catch (error) {
-    window.alert(`Google Login Error: ${error.message}`)
-    console.log(error)
+    toastRef.current.show(`Google Login Error: ${error.message}`)
   }
 }

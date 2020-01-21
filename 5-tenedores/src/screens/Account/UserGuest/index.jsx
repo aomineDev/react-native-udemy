@@ -11,7 +11,7 @@ const UserGuest = ({ navigation }) => (
     centerContent
   >
     <Image
-      source={require('../../../assets/img/account/user-guest.jpg')}
+      source={require('../../../assets/img/account/user-guest.png')}
       style={styles.image}
       resizeMode='contain'
     />

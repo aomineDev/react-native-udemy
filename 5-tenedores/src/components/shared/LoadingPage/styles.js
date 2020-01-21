@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   overlay: {
-    elevation: 0
+    elevation: 0,
+    backgroundColor: 'transparent'
   },
   view: {
     flex: 1,

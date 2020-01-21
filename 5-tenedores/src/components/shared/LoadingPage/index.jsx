@@ -4,10 +4,10 @@ import { Overlay } from 'react-native-elements'
 
 import styles from './styles'
 
-const LoadingPage = ({ isVisible, text }) => {
+const LoadingPage = ({ text }) => {
   return (
     <Overlay
-      isVisible={isVisible}
+      isVisible
       windowBackgroundColor='transparent'
       overlayStyle={styles.overlay}
     >
