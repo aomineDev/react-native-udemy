@@ -6,7 +6,7 @@ import { validateEmail } from '../../../utils/Validation'
 import InputForm from '../../Form/InputForm'
 import ButtonForm from '../../Form/ButtonForm'
 
-const SignInForm = ({ onSignIn, onLogged, disabled, loading, handleSignIn, toastRef }) => {
+export default function SignInForm ({ onSignIn, onLogged, disabled, loading, handleSignIn, toastRef }) {
   const [email, setEmail] = useInputValue('')
   const [password, setPassword] = useInputValue('')
   const resultEmailValidate = validateEmail(email)
@@ -61,5 +61,3 @@ const SignInForm = ({ onSignIn, onLogged, disabled, loading, handleSignIn, toast
     </>
   )
 }
-
-export default SignInForm

@@ -6,7 +6,7 @@ import { validateEmail } from '../../../utils/Validation'
 import InputForm from '../../Form/InputForm'
 import ButtonForm from '../../Form/ButtonForm'
 
-const SignUpForm = ({ onSignUp, onRegister, toastRef }) => {
+export default function SignUpForm ({ onSignUp, onRegister, toastRef }) {
   const [email, setEmail] = useInputValue('')
   const [password, setPassword] = useInputValue('')
   const [repeatPassword, setRepeatPassword] = useInputValue('')
@@ -76,5 +76,3 @@ const SignUpForm = ({ onSignUp, onRegister, toastRef }) => {
     </>
   )
 }
-
-export default SignUpForm

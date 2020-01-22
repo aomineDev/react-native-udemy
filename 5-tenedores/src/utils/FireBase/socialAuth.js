@@ -1,9 +1,9 @@
 import * as firebase from 'firebase/app'
 import * as Facebook from 'expo-facebook'
 import * as Google from 'expo-google-app-auth'
-import { FacebookApi, GoogleApi } from '../config/social'
+import { FacebookApi, GoogleApi } from '../../config/social'
 
-export const onSignInWithFacebook = async (handleSignIn, onLogged, toastRef) => {
+export async function onSignInWithFacebook (handleSignIn, onLogged, toastRef) {
   try {
     await Facebook.initializeAsync(FacebookApi.appId)
     const { type, token } = await Facebook.logInWithReadPermissionsAsync({
@@ -35,7 +35,7 @@ export const onSignInWithFacebook = async (handleSignIn, onLogged, toastRef) => 
   }
 }
 
-export const onSignInWithGoogle = async (handleSignIn, onLogged, toastRef) => {
+export async function onSignInWithGoogle (handleSignIn, onLogged, toastRef) {
   try {
     const { type, idToken, accessToken } = await Google.logInAsync(GoogleApi.config)
 

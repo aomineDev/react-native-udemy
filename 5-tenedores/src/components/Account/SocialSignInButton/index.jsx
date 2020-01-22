@@ -1,7 +1,16 @@
 import React from 'react'
 import { SocialIcon } from 'react-native-elements'
 
-const SocialSignInButton = ({ title, type, onSignIn, onLogged, disabled, loading, handleSignIn, toastRef }) => {
+export default function SocialSignInButton ({
+  title,
+  type,
+  onSignIn,
+  onLogged,
+  disabled,
+  loading,
+  handleSignIn,
+  toastRef
+}) {
   const handlePress = () => {
     onSignIn(handleSignIn, onLogged, toastRef)
   }
@@ -18,5 +27,3 @@ const SocialSignInButton = ({ title, type, onSignIn, onLogged, disabled, loading
     />
   )
 }
-
-export default SocialSignInButton

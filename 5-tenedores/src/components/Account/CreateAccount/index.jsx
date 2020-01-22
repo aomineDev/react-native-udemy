@@ -3,17 +3,17 @@ import { Text } from 'react-native'
 
 import styles from './styles'
 
-const CreateAccount = ({ onPress }) => (
-  <Text style={styles.textRegister}>
-    ¿Aún no tienes una cuenta?
-    {' '}
-    <Text
-      style={styles.btnRegister}
-      onPress={onPress}
-    >
-      Regístrate
+export default function CreateAccount ({ onPress }) {
+  return (
+    <Text style={styles.textRegister}>
+      ¿Aún no tienes una cuenta?
+      {' '}
+      <Text
+        style={styles.btnRegister}
+        onPress={onPress}
+      >
+        Regístrate
+      </Text>
     </Text>
-  </Text>
-)
-
-export default CreateAccount
+  )
+}

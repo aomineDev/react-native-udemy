@@ -5,7 +5,7 @@ import LoadingPage from '../../components/shared/LoadingPage'
 import UserGuest from './UserGuest'
 import UserLogged from './UserLogged'
 
-const Account = () => {
+export default function Account () {
   const [login, setLogin] = useState(null)
 
   useEffect(() => {
@@ -18,5 +18,3 @@ const Account = () => {
 
   return login ? <UserLogged /> : <UserGuest />
 }
-
-export default Account

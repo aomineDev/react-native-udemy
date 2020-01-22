@@ -3,7 +3,7 @@ import { Input, Icon } from 'react-native-elements'
 
 import styles from './styles'
 
-const InputForm = ({ placeholder, value, onChange, disabled, isPassword, iconName }) => {
+export default function InputForm ({ placeholder, value, onChange, disabled, isPassword, iconName }) {
   const [hidePassword, setHidePassword] = useState(true)
 
   const handlePress = () => {
@@ -23,12 +23,12 @@ const InputForm = ({ placeholder, value, onChange, disabled, isPassword, iconNam
       rightIcon={
         <Icon
           name={!isPassword ? iconName : (hidePassword ? iconName[0] : iconName[1])}
-          iconStyle={styles.iconRight}
+          color='#c1c1c1'
+          underlayColor='transparent'
           onPress={handlePress}
+          onLongPress={() => window.alert('alv')}
         />
       }
     />
   )
 }
-
-export default InputForm

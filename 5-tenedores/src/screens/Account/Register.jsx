@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { withNavigation } from 'react-navigation'
 
-import { onSignUp } from '../../utils/FiresabeAuth'
+import { onSignUp } from '../../utils/FireBase/auth'
 
 import LogoWrapper from '../../layouts/Account/LogoWrapper'
 import FormWrapper from '../../layouts/Account/FormWrapper'

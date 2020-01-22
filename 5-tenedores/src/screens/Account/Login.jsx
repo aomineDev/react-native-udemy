@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react'
 import { View } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
-import { onSignIn } from '../../utils/FiresabeAuth'
-import { onSignInWithFacebook, onSignInWithGoogle } from '../../utils/FirebaseSocialAuth'
+import { onSignIn } from '../../utils/FireBase/auth'
+import { onSignInWithFacebook, onSignInWithGoogle } from '../../utils/FireBase/socialAuth'
 
 import LogoWrapper from '../../layouts/Account/LogoWrapper'
 import FormWrapper from '../../layouts/Account/FormWrapper'
