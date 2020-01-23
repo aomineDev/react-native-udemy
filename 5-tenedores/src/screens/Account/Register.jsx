@@ -6,7 +6,7 @@ import { onSignUp } from '../../utils/FireBase/auth'
 import LogoWrapper from '../../layouts/Account/LogoWrapper'
 import FormWrapper from '../../layouts/Account/FormWrapper'
 
-import SignUpForm from '../../components/Account/SignUpForm'
+import SignUpForm from '../../components/Account/Register/SignUpForm'
 import Toast from '../../components/shared/Toast'
 
 const Register = ({ navigation }) => {

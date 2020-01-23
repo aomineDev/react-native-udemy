@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native'
 
-import globalStyles from '../../../assets/styles/globalStyles'
-
 const styles = StyleSheet.create({
   viewBody: {
     marginLeft: 30,
@@ -22,16 +20,6 @@ const styles = StyleSheet.create({
   description: {
     textAlign: 'center',
     marginBottom: 20
-  },
-  viewBtn: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  btnStyle: {
-    ...globalStyles.button
-  },
-  btnContainer: {
-    width: '70%'
   }
 })
 

@@ -6,7 +6,7 @@ import styles from './styles'
 export default function InputForm ({ placeholder, value, onChange, disabled, isPassword, iconName }) {
   const [hidePassword, setHidePassword] = useState(true)
 
-  const handlePress = () => {
+  function handlePress () {
     if (isPassword) return setHidePassword(!hidePassword)
     return null
   }

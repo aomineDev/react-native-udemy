@@ -21,9 +21,9 @@ export async function onSignInWithFacebook (handleSignIn, onLogged, toastRef) {
         .then(() => onLogged())
         .catch((error) => {
           if (error.code === 'auth/account-exists-with-different-credential') {
-            toastRef.current.show('Este email ya esta en uso con un diferente proveedor')
+            toastRef.current.show('Este email ya esta en uso con un diferente proveedor', 1000)
           } else {
-            toastRef.current.show('Ocurrio un error, intentelo más tarde')
+            toastRef.current.show('Ocurrio un error, intentelo más tarde', 1000)
           }
           handleSignIn(false)
         })
@@ -31,7 +31,7 @@ export async function onSignInWithFacebook (handleSignIn, onLogged, toastRef) {
       handleSignIn(false)
     }
   } catch (error) {
-    toastRef.current.show(`Facebook Login Error: ${error.message}`)
+    toastRef.current.show(`Facebook Login Error: ${error.message}`, 1000)
   }
 }
 
@@ -49,13 +49,13 @@ export async function onSignInWithGoogle (handleSignIn, onLogged, toastRef) {
         .signInWithCredential(credentials)
         .then(() => onLogged())
         .catch(() => {
-          toastRef.current.show('Ocurrio un error, intentelo más tarde')
+          toastRef.current.show('Ocurrio un error, intentelo más tarde', 1000)
           handleSignIn(false)
         })
     } else {
-      toastRef.current.show('Ocurrio un error, intentelo más tarde')
+      toastRef.current.show('Ocurrio un error, intentelo más tarde', 1000)
     }
   } catch (error) {
-    toastRef.current.show(`Google Login Error: ${error.message}`)
+    toastRef.current.show(`Google Login Error: ${error.message}`, 1000)
   }
 }

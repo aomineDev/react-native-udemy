@@ -11,7 +11,7 @@ export default function SocialSignInButton ({
   handleSignIn,
   toastRef
 }) {
-  const handlePress = () => {
+  function handlePress () {
     onSignIn(handleSignIn, onLogged, toastRef)
   }
 

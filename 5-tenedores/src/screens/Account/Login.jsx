@@ -8,9 +8,9 @@ import { onSignInWithFacebook, onSignInWithGoogle } from '../../utils/FireBase/s
 import LogoWrapper from '../../layouts/Account/LogoWrapper'
 import FormWrapper from '../../layouts/Account/FormWrapper'
 
-import SignInForm from '../../components/Account/SignInForm'
-import CreateAccount from '../../components/Account/CreateAccount'
-import SocialSignInButton from '../../components/Account/SocialSignInButton'
+import SignInForm from '../../components/Account/Login/SignInForm'
+import CreateAccount from '../../components/Account/Login/CreateAccount'
+import SocialSignInButton from '../../components/Account/Login/SocialSignInButton'
 import Divider from '../../components/shared/Divider'
 import Toast from '../../components/shared/Toast'
 
@@ -18,23 +18,22 @@ import globalStyles from '../../assets/styles/globalStyles'
 
 const Login = ({ navigation }) => {
   const toastRef = useRef()
-
   const [isDisabled, setIsDisabled] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingFacebook, setIsLoadingFacebook] = useState(false)
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false)
 
-  const handleSignIn = (value) => {
+  function handleSignIn (value) {
     setIsDisabled(value)
     setIsLoading(value)
   }
 
-  const handleSignInWithFacebook = (value) => {
+  function handleSignInWithFacebook (value) {
     setIsDisabled(value)
     setIsLoadingFacebook(value)
   }
 
-  const handleSignInWithGoogle = (value) => {
+  function handleSignInWithGoogle (value) {
     setIsDisabled(value)
     setIsLoadingGoogle(value)
   }

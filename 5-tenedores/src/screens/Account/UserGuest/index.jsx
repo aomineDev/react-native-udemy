@@ -1,7 +1,8 @@
 import React from 'react'
-import { ScrollView, View, Text, Image } from 'react-native'
-import { Button } from 'react-native-elements'
+import { ScrollView, Text, Image } from 'react-native'
 import { withNavigation } from 'react-navigation'
+
+import NavigateToLogin from '../../../components/Account/UserGuest/NavigateToLogin'
 
 import styles from './styes'
 
@@ -17,14 +18,9 @@ const UserGuest = ({ navigation }) => (
     />
     <Text style={styles.title}>Consulta tu perfil de 5 tenedores</Text>
     <Text style={styles.description}>¿Cómo describirías tu mejor restaurante? Busca y visualiza los mejores restaurantes de una forma sencilla, vota cual te ha gustado más y comenta como ha sido tu experiencia.</Text>
-    <View style={styles.viewBtn}>
-      <Button
-        title='Ver tu perfil'
-        buttonStyle={styles.btnStyle}
-        containerStyle={styles.btnContainer}
-        onPress={() => navigation.navigate('Login')}
-      />
-    </View>
+    <NavigateToLogin
+      onPress={() => navigation.navigate('Login')}
+    />
   </ScrollView>
 )
 

@@ -5,7 +5,7 @@ export function onSignUp (email, password) {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => resolve('Usuario creado correctamente'))
+      .then(() => resolve('Usuario registrado, Bienvenido 😊'))
       .catch((error) => reject(error))
   })
 }
@@ -24,11 +24,12 @@ export function currentUser () {
   return new Promise((resolve, reject) => {
     (async () => {
       try {
-        const { displayName, email, photoURL } = await firebase.auth().currentUser
+        const { displayName, email, photoURL, uid } = await firebase.auth().currentUser
         resolve({
           displayName,
           email,
-          photoURL
+          photoURL,
+          uid
         })
       } catch (error) {
         reject(error)
