@@ -3,14 +3,13 @@ import { Avatar } from 'react-native-elements'
 
 import styles from './styles'
 
-export default function AvatarComponent ({ uri, onEditPress }) {
+export default function AvatarComponent ({ uri, ...props }) {
   return (
     <Avatar
-      rounded
-      size='large'
+      {...props}
       containerStyle={styles.avatar}
       showEditButton
-      onEditPress={onEditPress}
+      rounded
       source={{
         uri: uri ?? 'https://api.adorable.io/avatars/285/adorable.png'
       }}

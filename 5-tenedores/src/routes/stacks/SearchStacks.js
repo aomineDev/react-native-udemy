@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
-import SearchScreen from '../../screens/Search'
+import SearchScreen from 'screens/Search'
 
 const SearchScreenStacks = createStackNavigator({
   Search: {

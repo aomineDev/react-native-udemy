@@ -12,7 +12,7 @@ export default function Loading ({ isVisible }) {
       overlayStyle={styles.overlay}
     >
       <View style={styles.view}>
-        <ActivityIndicator size='large' color='#08a680' />
+        <ActivityIndicator size='large' color='#00a680' />
       </View>
     </Overlay>
   )

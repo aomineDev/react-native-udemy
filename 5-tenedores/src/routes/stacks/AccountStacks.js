@@ -1,8 +1,8 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
-import AccountScreen from '../../screens/Account'
-import LoginScreen from '../../screens/Account/Login'
-import RegisterScreen from '../../screens/Account/Register'
+import AccountScreen from 'screens/Account'
+import LoginScreen from 'screens/Account/Login'
+import RegisterScreen from 'screens/Account/Register'
 
 const AccountScreenStacks = createStackNavigator(
   {
@@ -15,7 +15,7 @@ const AccountScreenStacks = createStackNavigator(
     Login: {
       screen: LoginScreen,
       navigationOptions: () => ({
-        title: 'Ingresa'
+        title: 'Regístrarse'
       })
     },
     Register: {

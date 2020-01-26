@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
-import TopRestaurantsScreen from '../../screens/TopRestaurants'
+import TopRestaurantsScreen from 'screens/TopRestaurants'
 
 const TopRestaurantsScreenStack = createStackNavigator({
   TopRestaurants: {

@@ -4,14 +4,13 @@ import { Button } from 'react-native-elements'
 
 import styles from './styles'
 
-export default function NavigateToLogin ({ onPress }) {
+export default function RedirectionButton (props) {
   return (
     <View style={styles.viewBtn}>
       <Button
-        title='Ver tu perfil'
+        {...props}
         buttonStyle={styles.btnStyle}
         containerStyle={styles.btnContainer}
-        onPress={onPress}
       />
     </View>
   )

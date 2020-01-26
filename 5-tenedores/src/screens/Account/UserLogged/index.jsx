@@ -1,13 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react'
 
-import { onSignOut, currentUser } from '../../../utils/FireBase/auth'
-import { PermissionsByImagePicker } from '../../../utils/Permissions'
-import { uploadAvatar, updatePhotoUrl } from '../../../utils/FireBase/storage'
+import { signOutUser, getCurrentUser } from 'utils/FireBase/auth'
 
-import SignOutButton from '../../../components/Account/UserLogged/SignOutButton'
-import UserProfile from '../../../components/Account/UserLogged/UserProfile'
-import Loading from '../../../components/shared/Loading'
-import Toast from '../../../components/shared/Toast'
+import SignOutButton from 'components/Account/UserLogged/SignOutButton'
+import UserProfile from 'components/Account/UserLogged/UserProfile'
+import UserDetails from 'components/Account/UserLogged/UserDetails'
+import Loading from 'components/shared/Loading'
+import Toast from 'components/shared/Toast'
 
 // import styles from './styles'
 
@@ -19,7 +18,7 @@ export default function UserLogged () {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    currentUser()
+    getCurrentUser()
       .then(user => {
         setUser(user)
       })
@@ -27,30 +26,27 @@ export default function UserLogged () {
     setReload(false)
   }, [reload])
 
-  function handleReload (value) {
+  function toggleAwaitResponse (value) {
     setLoading(value)
     setReload(!value)
   }
 
-  function onEditAvatar () {
-    PermissionsByImagePicker(
-      user.uid,
-      toastRef,
-      handleReload,
-      uploadAvatar,
-      updatePhotoUrl
-    )
+  function handleSignOutButtonPress () {
+    signOutUser()
   }
 
   return (
     <>
       <UserProfile
         {...user}
-        onEditAvatar={onEditAvatar}
-        handleReload={handleReload}
+        toggleAwaitResponse={toggleAwaitResponse}
         toastRef={toastRef}
       />
-      <SignOutButton onPress={onSignOut} />
+      <UserDetails />
+      <SignOutButton
+        title='Cerrar sesión'
+        onPress={handleSignOutButtonPress}
+      />
       <Toast
         toastRef={toastRef}
         position='bottom'

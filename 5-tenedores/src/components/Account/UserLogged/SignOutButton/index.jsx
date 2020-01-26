@@ -1,11 +1,14 @@
 import React from 'react'
 import { Button } from 'react-native-elements'
 
-export default function SignOutButton ({ onPress }) {
+import styles from './styles'
+
+export default function SignOutButton (props) {
   return (
     <Button
-      title='Cerrar sesión'
-      onPress={onPress}
+      {...props}
+      buttonStyle={styles.btn}
+      titleStyle={styles.title}
     />
   )
 }

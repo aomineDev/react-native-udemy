@@ -2,79 +2,70 @@ import React, { useState, useRef } from 'react'
 import { View } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
-import { onSignIn } from '../../utils/FireBase/auth'
-import { onSignInWithFacebook, onSignInWithGoogle } from '../../utils/FireBase/socialAuth'
+import LogoWrapper from 'layouts/Account/LogoWrapper'
+import FormWrapper from 'layouts/Account/FormWrapper'
 
-import LogoWrapper from '../../layouts/Account/LogoWrapper'
-import FormWrapper from '../../layouts/Account/FormWrapper'
+import LoginForm from 'components/Account/Login/LoginForm'
+import CreateAccount from 'components/Account/Login/CreateAccount'
+import SocialLogin from 'components/Account/Login/SocialLogin'
+import Divider from 'components/shared/Divider'
+import Toast from 'components/shared/Toast'
 
-import SignInForm from '../../components/Account/Login/SignInForm'
-import CreateAccount from '../../components/Account/Login/CreateAccount'
-import SocialSignInButton from '../../components/Account/Login/SocialSignInButton'
-import Divider from '../../components/shared/Divider'
-import Toast from '../../components/shared/Toast'
+import globalStyles from 'assets/styles/globalStyles'
 
-import globalStyles from '../../assets/styles/globalStyles'
-
-const Login = ({ navigation }) => {
+function Login ({ navigation }) {
   const toastRef = useRef()
+
   const [isDisabled, setIsDisabled] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingFacebook, setIsLoadingFacebook] = useState(false)
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false)
 
-  function handleSignIn (value) {
+  function toggleAwaitRequest (value, provider) {
     setIsDisabled(value)
+
+    if (provider === 'facebook') {
+      setIsLoadingFacebook(value)
+      return
+    }
+
+    if (provider === 'google') {
+      setIsLoadingGoogle(value)
+      return
+    }
+
     setIsLoading(value)
   }
 
-  function handleSignInWithFacebook (value) {
-    setIsDisabled(value)
-    setIsLoadingFacebook(value)
-  }
-
-  function handleSignInWithGoogle (value) {
-    setIsDisabled(value)
-    setIsLoadingGoogle(value)
+  function redirectTo (route) {
+    navigation.navigate(route)
   }
 
   return (
     <LogoWrapper>
       <FormWrapper>
-        <SignInForm
-          onSignIn={onSignIn}
-          onLogged={() => navigation.navigate('Account')}
+        <LoginForm
+          redirect={() => redirectTo('Account')}
+          toggleAwaitRequest={toggleAwaitRequest}
           disabled={isDisabled}
           loading={isLoading}
-          handleSignIn={handleSignIn}
           toastRef={toastRef}
         />
       </FormWrapper>
       <View style={globalStyles.container}>
         <CreateAccount
-          onPress={() => navigation.navigate('Register')}
+          redirect={() => redirectTo('Register')}
         />
       </View>
       <Divider />
       <View style={globalStyles.container}>
-        <SocialSignInButton
-          title='Iniciar Sesión con Facebook'
-          type='facebook'
-          onSignIn={onSignInWithFacebook}
-          onLogged={() => navigation.navigate('Account')}
-          disabled={isDisabled}
-          loading={isLoadingFacebook}
-          handleSignIn={handleSignInWithFacebook}
-          toastRef={toastRef}
-        />
-        <SocialSignInButton
-          title='Iniciar Sesión con Google'
-          type='google'
-          onSignIn={onSignInWithGoogle}
-          onLogged={() => navigation.navigate('Account')}
-          disabled={isDisabled}
-          loading={isLoadingGoogle}
-          handleSignIn={handleSignInWithGoogle}
+        <SocialLogin
+          redirect={() => redirectTo('Account')}
+          setIsDisabled={setIsDisabled}
+          toggleAwaitRequest={toggleAwaitRequest}
+          isDisabled={isDisabled}
+          isLoadingFacebook={isLoadingFacebook}
+          isLoadingGoogle={isLoadingGoogle}
           toastRef={toastRef}
         />
       </View>

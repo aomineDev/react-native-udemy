@@ -1,6 +1,6 @@
 import * as firebase from 'firebase/app'
 
-export function onSignUp (email, password) {
+export function registerUser (email, password) {
   return new Promise((resolve, reject) => {
     firebase
       .auth()
@@ -10,7 +10,7 @@ export function onSignUp (email, password) {
   })
 }
 
-export function onSignIn (email, password) {
+export function loginUser (email, password) {
   return new Promise((resolve, reject) => {
     firebase
       .auth()
@@ -20,7 +20,7 @@ export function onSignIn (email, password) {
   })
 }
 
-export function currentUser () {
+export function getCurrentUser () {
   return new Promise((resolve, reject) => {
     (async () => {
       try {
@@ -38,6 +38,6 @@ export function currentUser () {
   })
 }
 
-export function onSignOut () {
+export function signOutUser () {
   firebase.auth().signOut()
 }

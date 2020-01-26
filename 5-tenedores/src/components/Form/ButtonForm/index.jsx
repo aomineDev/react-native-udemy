@@ -3,16 +3,14 @@ import { Button } from 'react-native-elements'
 
 import styles from './styles'
 
-export default function ButtonForm ({ title, onSubmit, disabled, loading }) {
+export default function ButtonForm (props) {
   return (
     <Button
+      {...props}
       containerStyle={styles.btnContainerRegister}
       buttonStyle={styles.btnRegister}
-      title={title}
-      onPress={onSubmit}
-      disabled={disabled}
       disabledStyle={styles.btnRegisterDisabled}
-      loading={loading}
+
     />
   )
 }
