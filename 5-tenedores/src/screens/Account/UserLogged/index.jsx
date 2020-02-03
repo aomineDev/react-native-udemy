@@ -14,21 +14,21 @@ export default function UserLogged () {
   const toastRef = useRef()
 
   const [user, setUser] = useState({})
-  const [reload, setReload] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [reload, setReload] = useState(false)
 
   useEffect(() => {
     getCurrentUser()
       .then(user => {
         setUser(user)
       })
-      .catch(error => toastRef.current.show(error, 1000))
+      .catch(error => toastRef.current.show(error.message, 1000))
     setReload(false)
   }, [reload])
 
   function toggleAwaitResponse (value) {
     setLoading(value)
-    setReload(!value)
+    if (!value) setReload(!value)
   }
 
   function handleSignOutButtonPress () {
@@ -42,7 +42,11 @@ export default function UserLogged () {
         toggleAwaitResponse={toggleAwaitResponse}
         toastRef={toastRef}
       />
-      <UserDetails />
+      <UserDetails
+        {...user}
+        setReload={setReload}
+        toastRef={toastRef}
+      />
       <SignOutButton
         title='Cerrar sesión'
         onPress={handleSignOutButtonPress}

@@ -1,34 +1,64 @@
-import React from 'react'
-import { View, Alert } from 'react-native'
+import React, { useState } from 'react'
+import { View } from 'react-native'
 import { ListItem } from 'react-native-elements'
+
+import ModalWrapper from 'layouts/Account/ModalWrapper'
+import EditDisplayNameForm from '../EditDisplayNameForm'
+import EditEmailForm from '../EditEmailForm'
+import EditPasswordForm from '../EditPasswordForm'
 
 import styles from './styles'
 
-export default function UserDetails () {
+export default function UserDetails ({ displayName, email, setReload, toastRef }) {
+  const [isVisible, setIsVisible] = useState(false)
+  const [formComponent, setFormComponent] = useState(null)
+
+  function selectComponent (key) {
+    switch (key) {
+      case 'displayName':
+        setFormComponent(
+          <EditDisplayNameForm
+            value={displayName}
+            setReload={setReload}
+            setIsVisible={setIsVisible}
+            toastRef={toastRef}
+          />
+        )
+        break
+      case 'email':
+        setFormComponent(<EditEmailForm value={email} />)
+        break
+      case 'password':
+        setFormComponent(<EditPasswordForm />)
+        break
+    }
+    setIsVisible(true)
+  }
+
   const details = [
     {
-      title: 'Cambiar Nombre y Apellidos',
+      title: 'Editar nombre de usuario',
       iconNameLeft: 'account-circle',
       iconColorLeft: '#ccc',
       iconNameRight: 'keyboard-arrow-right',
       iconColorRight: '#ccc',
-      handlePress: () => Alert.alert('test', 'change displayName')
+      handlePress: () => selectComponent('displayName')
     },
     {
-      title: 'Cambiar Email',
+      title: 'Editar email',
       iconNameLeft: 'mail',
       iconColorLeft: '#ccc',
       iconNameRight: 'keyboard-arrow-right',
       iconColorRight: '#ccc',
-      handlePress: () => Alert.alert('test', 'change Email')
+      handlePress: () => selectComponent('email')
     },
     {
-      title: 'Cambiar Contraseña',
+      title: 'Editar contraseña',
       iconNameLeft: 'lock',
       iconColorLeft: '#ccc',
       iconNameRight: 'keyboard-arrow-right',
       iconColorRight: '#ccc',
-      handlePress: () => Alert.alert('test', 'change Password')
+      handlePress: () => selectComponent('password')
     }
   ]
 
@@ -50,6 +80,15 @@ export default function UserDetails () {
           containerStyle={styles.container}
         />
       ))}
+
+      {formComponent && (
+        <ModalWrapper
+          isVisible={isVisible}
+          setIsVisible={setIsVisible}
+        >
+          {formComponent}
+        </ModalWrapper>
+      )}
     </View>
   )
 }

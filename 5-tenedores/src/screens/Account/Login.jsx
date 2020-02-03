@@ -54,7 +54,7 @@ function Login ({ navigation }) {
       </FormWrapper>
       <View style={globalStyles.container}>
         <CreateAccount
-          redirect={() => redirectTo('Register')}
+          onPress={() => redirectTo('Register')}
         />
       </View>
       <Divider />

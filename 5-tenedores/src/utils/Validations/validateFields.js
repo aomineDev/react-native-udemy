@@ -1,6 +1,6 @@
 import validateEmail from './validateEmail'
 
-export default function validateFields (email, password, repeatPassword = true) {
+export function validateAuthFields (email, password, repeatPassword = true) {
   const validations = {
     fields: {
       isValid: true,
@@ -23,4 +23,8 @@ export default function validateFields (email, password, repeatPassword = true) 
   if ((password !== repeatPassword) && (repeatPassword !== true)) validations.password.isValid = false
 
   return validations
+}
+
+export function validateEditDisplayName () {
+
 }

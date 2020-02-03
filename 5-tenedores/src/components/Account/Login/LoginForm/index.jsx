@@ -1,6 +1,6 @@
 import React from 'react'
 
-import validateFields from 'utils/Validations/validateFields'
+import { validateAuthFields } from 'utils/Validations/validateFields'
 import { loginUser } from 'utils/FireBase/auth'
 import { useInputValue } from 'hooks/useInputValue'
 
@@ -23,7 +23,7 @@ export default function LoginForm ({
   ]
 
   function validateForm () {
-    let validations = validateFields(email, password)
+    let validations = validateAuthFields(email, password)
     let isValid = true
 
     validations = Object.values(validations)

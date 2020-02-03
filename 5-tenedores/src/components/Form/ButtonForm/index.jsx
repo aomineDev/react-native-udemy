@@ -3,13 +3,13 @@ import { Button } from 'react-native-elements'
 
 import styles from './styles'
 
-export default function ButtonForm (props) {
+export default function ButtonForm ({ isForEditForm, ...props }) {
   return (
     <Button
       {...props}
-      containerStyle={styles.btnContainerRegister}
-      buttonStyle={styles.btnRegister}
-      disabledStyle={styles.btnRegisterDisabled}
+      containerStyle={isForEditForm ? styles.btnEditFormContainer : styles.btnFormContainer}
+      buttonStyle={styles.btnForm}
+      disabledStyle={styles.btnFormDisabled}
 
     />
   )

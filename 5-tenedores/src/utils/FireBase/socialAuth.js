@@ -29,7 +29,7 @@ export function LoginUserWithFacebookCredentials (token) {
       .auth()
       .signInWithCredential(credentials)
       .then(() => resolve('Ok'))
-      .catch((error) => {
+      .catch(error => {
         if (error.code === 'auth/account-exists-with-different-credential') {
           reject(new Error('Este email ya esta en uso con un diferente proveedor'))
         } else {

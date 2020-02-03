@@ -3,7 +3,7 @@ import { Input, Icon } from 'react-native-elements'
 
 import styles from './styles'
 
-export default function InputForm ({ isPassword, iconName, ...props }) {
+export default function InputForm ({ isPassword, iconName, isForEditForm, ...props }) {
   const [isHidePassword, setIsHidePassword] = useState(true)
 
   function handleIconPress () {
@@ -14,7 +14,7 @@ export default function InputForm ({ isPassword, iconName, ...props }) {
   return (
     <Input
       {...props}
-      containerStyle={styles.inputForm}
+      containerStyle={isForEditForm ? styles.inputEditForm : styles.inputForm}
       secureTextEntry={isPassword && isHidePassword}
       rightIcon={
         <Icon

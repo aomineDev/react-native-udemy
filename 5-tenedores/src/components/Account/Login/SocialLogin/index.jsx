@@ -31,7 +31,7 @@ export default function SocialLogin ({
         toggleAwaitRequest(false, 'facebook')
       }
     } catch (error) {
-      toastRef.current.show(error, 1000)
+      toastRef.current.show(error.message, 1000)
       toggleAwaitRequest(false, 'facebook')
     }
   }
@@ -49,7 +49,7 @@ export default function SocialLogin ({
         toggleAwaitRequest(false, 'google')
       }
     } catch (error) {
-      toastRef.current.show(error, 1000)
+      toastRef.current.show(error.message, 1000)
       toggleAwaitRequest(false, 'google')
     }
   }

@@ -4,6 +4,10 @@ const styles = StyleSheet.create({
   inputForm: {
     width: '100%',
     marginTop: 20
+  },
+  inputEditForm: {
+    width: '100%',
+    marginBottom: 10
   }
 })
 

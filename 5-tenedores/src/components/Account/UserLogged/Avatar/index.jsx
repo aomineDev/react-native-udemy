@@ -8,8 +8,6 @@ export default function AvatarComponent ({ uri, ...props }) {
     <Avatar
       {...props}
       containerStyle={styles.avatar}
-      showEditButton
-      rounded
       source={{
         uri: uri ?? 'https://api.adorable.io/avatars/285/adorable.png'
       }}

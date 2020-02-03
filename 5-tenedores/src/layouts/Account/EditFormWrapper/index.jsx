@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import styles from './styles'
 
-export default function FormWrapper ({ children }) {
+export default function EditFormWrapper ({ children }) {
   return (
     <View style={styles.formContainer}>
       {children}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import validateFields from 'utils/Validations/validateFields'
+import { validateAuthFields } from 'utils/Validations/validateFields'
 import { registerUser } from 'utils/FireBase/auth'
 import { useInputValue } from 'hooks/useInputValue'
 
@@ -21,10 +21,8 @@ export default function RegisterForm ({ redirect, toastRef }) {
   ]
 
   function validateForm () {
-    let validations = validateFields(email, password, repeatPassword)
+    let validations = validateAuthFields(email, password, repeatPassword)
     let isValid = true
-
-    console.log(validations)
 
     validations = Object.values(validations)
     validations.some(validation => {

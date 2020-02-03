@@ -1,5 +1,8 @@
 import React from 'react'
 import { View, Text } from 'react-native'
+
+import { updateProfile } from 'utils/FireBase/user'
+
 import styles from './styles'
 
 import { permissionsByImagePicker, imagePicker } from 'utils/Permissions/imagePicker'
@@ -15,20 +18,20 @@ export default function UserProfile ({
   toggleAwaitResponse,
   toastRef
 }) {
-  function handleEditAvatar (uri) {
-    toastRef.current.show('Actualizando Avatar')
-    toggleAwaitResponse(true)
+  async function handleEditAvatar (uri) {
+    try {
+      toastRef.current.show('Actualizando avatar')
+      toggleAwaitResponse(true)
 
-    uploadAvatar(uri, uid)
-      .then(async () => {
-        await updatePhotoUrl(uid)
-        toastRef.current.show('Avatar actualizado')
-        toggleAwaitResponse(false)
-      })
-      .catch(() => {
-        toastRef.current.show('Error al subir el avatar')
-        toggleAwaitResponse(false)
-      })
+      await uploadAvatar(uri, uid)
+      const response = await updatePhotoUrl(uid)
+      await updateProfile(response)
+      toastRef.current.show('Avatar actualizado')
+    } catch (error) {
+      toastRef.current.show(error.message, 1000)
+    } finally {
+      toggleAwaitResponse(false)
+    }
   }
 
   async function handleEditPress () {
@@ -45,7 +48,7 @@ export default function UserProfile ({
         toastRef.current.show('Es necesario aceptar los permisos de la galeria', 1000)
       }
     } catch (error) {
-      toastRef.current.show('Ocurrio un error, inténtelo más tarde', 1000)
+      toastRef.current.show(error.message, 1000)
     }
   }
 
@@ -54,6 +57,8 @@ export default function UserProfile ({
       <Avatar
         onEditPress={handleEditPress}
         size='large'
+        showEditButton
+        rounded
         uri={photoURL}
       />
       <View>

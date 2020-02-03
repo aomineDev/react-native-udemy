@@ -3,14 +3,20 @@ import { StyleSheet } from 'react-native'
 import globalStyles from '../../../assets/styles/globalStyles'
 
 const styles = StyleSheet.create({
-  btnContainerRegister: {
+  btnFormContainer: {
     width: '95%',
     marginTop: 20
   },
-  btnRegister: {
-    ...globalStyles.button
+  btnEditFormContainer: {
+    width: '60%',
+    marginTop: 20
   },
-  btnRegisterDisabled: {
+  btnForm: {
+    ...globalStyles.button,
+    paddingRight: 24,
+    paddingLeft: 24
+  },
+  btnFormDisabled: {
     backgroundColor: '#00a680'
   }
 })

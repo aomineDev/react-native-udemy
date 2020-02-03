@@ -6,7 +6,7 @@ export function registerUser (email, password) {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => resolve('Usuario registrado, Bienvenido 😊'))
-      .catch((error) => reject(error))
+      .catch(error => reject(error))
   })
 }
 
@@ -16,7 +16,7 @@ export function loginUser (email, password) {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => resolve('Ok'))
-      .catch((error) => reject(error))
+      .catch(error => reject(error))
   })
 }
 
