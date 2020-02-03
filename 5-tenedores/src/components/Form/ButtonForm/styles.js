@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   btnEditFormContainer: {
     width: '60%',
-    marginTop: 20
+    marginTop: 10
   },
   btnForm: {
     ...globalStyles.button,

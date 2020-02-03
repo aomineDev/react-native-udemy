@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 import { useInputValue } from 'hooks/useInputValue'
-import { updateProfile } from 'utils/FireBase/user'
+import { updateDisplayName } from 'utils/FireBase/user'
+import { validateEditDisplayName } from 'utils/Validations/validateFields'
 
 import EditFormWrapper from 'layouts/Account/EditFormWrapper'
 import InputForm from 'components/Form/InputForm'
@@ -18,12 +19,12 @@ export default function EditDisplayNameForm ({ value, setReload, setIsVisible, t
     if (errorMessage) setErrorMessage(null)
   }, [displayName])
 
-  async function updateDisplayName () {
+  async function handleUpdateDisplayName () {
     try {
       setIsDisabled(true)
       setIsLoading(true)
-      await updateProfile({ displayName })
-      toastRef.current.show('Nombre de usuario actualizado')
+      const message = await updateDisplayName({ displayName })
+      toastRef.current.show(message)
       setReload(true)
     } catch (error) {
       toastRef.current.show(error.message, 1000)
@@ -33,16 +34,14 @@ export default function EditDisplayNameForm ({ value, setReload, setIsVisible, t
   }
 
   function handlePress () {
-    if (displayName === value) {
-      setErrorMessage('El nombre de usuario no ha cambiado')
-      return
-    }
-    if (!displayName) {
-      setErrorMessage('El nombre de usuario no puede estar vacio')
+    const { isValid, message } = validateEditDisplayName(displayName, value)
+
+    if (!isValid) {
+      setErrorMessage(message)
       return
     }
 
-    updateDisplayName()
+    handleUpdateDisplayName()
   }
 
   return (
