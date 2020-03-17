@@ -65,18 +65,41 @@ export function validateEditEmail (newEmail, email) {
   return validations
 }
 
-export function validateEditPassword (newPassword, password = true) {
+export function validateEditPassword (password, newPassword = true, repeatNewPassword = true) {
   const validations = {
     isValid: true,
+    fields: [],
     message: null
   }
 
-  if (!newPassword) {
+  if (!password) {
     validations.isValid = false
-    validations.message = 'La contraseña no puede estar vacia'
+    validations.fields = ['password']
+    validations.message = 'La contraseña es requerida'
+    return validations
   }
 
-  if (password === true) return validations
+  if (newPassword === true) return validations
+
+  if (!newPassword) {
+    validations.isValid = false
+    validations.fields = ['newPassword']
+    validations.message = 'La nueva contraseña es requerida'
+    return validations
+  }
+
+  if (!repeatNewPassword) {
+    validations.isValid = false
+    validations.fields = ['repeatNewPassword']
+    validations.message = 'La nueva contraseña es requerida'
+    return validations
+  }
+
+  if (newPassword !== repeatNewPassword) {
+    validations.isValid = false
+    validations.fields = ['newPassword', 'repeatNewPassword']
+    validations.message = 'Las contraseñas no coinciden'
+  }
 
   return validations
 }

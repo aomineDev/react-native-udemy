@@ -36,7 +36,12 @@ export default function UserDetails ({ displayName, email, setReload, toastRef }
         )
         break
       case 'password':
-        setFormComponent(<EditPasswordForm />)
+        setFormComponent(
+          <EditPasswordForm
+            setIsVisible={setIsVisible}
+            toastRef={toastRef}
+          />
+        )
         break
     }
     setIsVisible(true)

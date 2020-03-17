@@ -23,7 +23,7 @@ export default function EditEmailForm ({ value, setReload, setIsVisible, toastRe
   ]
 
   useEffect(() => {
-    if (errorMessage) setErrorMessage({})
+    if (Object.keys(errorMessage).length) setErrorMessage({})
   }, [email, password])
 
   function toggleAwaitRequest (value) {

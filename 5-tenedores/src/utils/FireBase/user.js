@@ -21,3 +21,14 @@ export function updateEmail (email) {
       .catch(error => reject(error))
   })
 }
+
+export function updatePassword (password) {
+  return new Promise((resolve, reject) => {
+    firebase
+      .auth()
+      .currentUser
+      .updatePassword(password)
+      .then(() => resolve('Contraseña actualizada'))
+      .catch(error => reject(error))
+  })
+}
