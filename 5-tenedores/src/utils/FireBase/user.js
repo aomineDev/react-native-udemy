@@ -1,5 +1,16 @@
 import * as firebase from 'firebase/app'
 
+export function updateAvatar (update) {
+  return new Promise((resolve, reject) => {
+    firebase
+      .auth()
+      .currentUser
+      .updateProfile(update)
+      .then(() => resolve('Avatar actualizado'))
+      .catch(error => reject(error))
+  })
+}
+
 export function updateDisplayName (update) {
   return new Promise((resolve, reject) => {
     firebase

@@ -5,8 +5,8 @@ import { signOutUser, getCurrentUser } from 'utils/FireBase/auth'
 import SignOutButton from 'components/Account/UserLogged/SignOutButton'
 import UserProfile from 'components/Account/UserLogged/UserProfile'
 import UserDetails from 'components/Account/UserLogged/UserDetails'
-import Loading from 'components/shared/Loading'
-import Toast from 'components/shared/Toast'
+import Loading from 'components/Shared/Loading'
+import Toast from 'components/Shared/Toast'
 
 // import styles from './styles'
 

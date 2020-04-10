@@ -7,7 +7,7 @@ import { useInputValue } from 'hooks/useInputValue'
 import InputForm from 'components/Form/InputForm'
 import ButtonForm from 'components/Form/ButtonForm'
 
-export default function RegisterForm ({ redirect, toastRef }) {
+export default function Form ({ redirect, toastRef }) {
   const [email, setEmail] = useInputValue('')
   const [password, setPassword] = useInputValue('')
   const [repeatPassword, setRepeatPassword] = useInputValue('')

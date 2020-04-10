@@ -5,11 +5,11 @@ import { withNavigation } from 'react-navigation'
 import LogoWrapper from 'layouts/Account/LogoWrapper'
 import FormWrapper from 'layouts/Account/FormWrapper'
 
-import LoginForm from 'components/Account/Login/LoginForm'
+import Form from 'components/Account/Login/Form'
 import CreateAccount from 'components/Account/Login/CreateAccount'
 import SocialLogin from 'components/Account/Login/SocialLogin'
-import Divider from 'components/shared/Divider'
-import Toast from 'components/shared/Toast'
+import Divider from 'components/Shared/Divider'
+import Toast from 'components/Shared/Toast'
 
 import globalStyles from 'assets/styles/globalStyles'
 
@@ -44,7 +44,7 @@ function Login ({ navigation }) {
   return (
     <LogoWrapper>
       <FormWrapper>
-        <LoginForm
+        <Form
           redirect={() => redirectTo('Account')}
           toggleAwaitRequest={toggleAwaitRequest}
           disabled={isDisabled}

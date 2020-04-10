@@ -4,8 +4,8 @@ import { withNavigation } from 'react-navigation'
 import LogoWrapper from 'layouts/Account/LogoWrapper'
 import FormWrapper from 'layouts/Account/FormWrapper'
 
-import RegisterForm from 'components/Account/Register/RegisterForm'
-import Toast from 'components/shared/Toast'
+import Form from 'components/Account/Register/Form'
+import Toast from 'components/Shared/Toast'
 
 function Register ({ navigation }) {
   const toastRef = useRef()
@@ -13,7 +13,7 @@ function Register ({ navigation }) {
   return (
     <LogoWrapper>
       <FormWrapper>
-        <RegisterForm
+        <Form
           redirect={() => navigation.navigate('Account')}
           toastRef={toastRef}
         />

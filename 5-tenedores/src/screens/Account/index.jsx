@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as firebase from 'firebase/app'
 
-import LoadingPage from 'components/shared/LoadingPage'
+import LoadingPage from 'components/Shared/LoadingPage'
 import UserGuest from './UserGuest'
 import UserLogged from './UserLogged'
 

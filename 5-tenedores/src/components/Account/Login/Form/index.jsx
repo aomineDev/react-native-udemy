@@ -7,7 +7,7 @@ import { useInputValue } from 'hooks/useInputValue'
 import InputForm from 'components/Form/InputForm'
 import ButtonForm from 'components/Form/ButtonForm'
 
-export default function LoginForm ({
+export default function Form ({
   redirect,
   toggleAwaitRequest,
   disabled,

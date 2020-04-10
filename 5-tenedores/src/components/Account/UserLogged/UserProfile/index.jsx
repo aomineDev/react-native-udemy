@@ -1,14 +1,13 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-import { updateProfile } from 'utils/FireBase/user'
-
-import styles from './styles'
-
-import { permissionsByImagePicker, imagePicker } from 'utils/Permissions/imagePicker'
+import { updateAvatar } from 'utils/FireBase/user'
 import { uploadAvatar, updatePhotoUrl } from 'utils/FireBase/storage'
+import { permissionsByImagePicker, imagePicker } from 'utils/Permissions/imagePicker'
 
 import Avatar from '../Avatar'
+
+import styles from './styles'
 
 export default function UserProfile ({
   uid,
@@ -22,11 +21,10 @@ export default function UserProfile ({
     try {
       toastRef.current.show('Actualizando avatar')
       toggleAwaitResponse(true)
-
       await uploadAvatar(uri, uid)
       const response = await updatePhotoUrl(uid)
-      await updateProfile(response)
-      toastRef.current.show('Avatar actualizado')
+      const message = await updateAvatar(response)
+      toastRef.current.show(message)
     } catch (error) {
       toastRef.current.show(error.message, 1000)
     } finally {
