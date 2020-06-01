@@ -37,7 +37,7 @@ export default function UserProfile ({
       const { status } = await permissionsByImagePicker()
 
       if (status === 'granted') {
-        const { cancelled, uri } = await imagePicker()
+        const { cancelled, uri } = await imagePicker(1, 1)
 
         if (!cancelled) {
           handleEditAvatar(uri)

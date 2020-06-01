@@ -15,14 +15,14 @@ export function permissionsByImagePicker () {
   })
 }
 
-export function imagePicker () {
+export function imagePicker (a, b) {
   return new Promise((resolve, reject) => {
     (async () => {
       try {
         const response = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.All,
           allowsEditing: true,
-          aspect: [1, 1]
+          aspect: [a, b]
         })
 
         resolve(response)

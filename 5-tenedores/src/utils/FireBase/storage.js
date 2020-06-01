@@ -6,8 +6,8 @@ export async function uploadAvatar (uri, nameImage) {
     const blob = await response.blob()
     const ref = firebase
       .storage()
-      .ref()
-      .child(`avatar/${nameImage}`)
+      .ref('avatar')
+      .child(nameImage)
     return ref.put(blob)
   } catch (error) {
     return new Error('Error al subir el avatar')

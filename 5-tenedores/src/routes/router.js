@@ -4,7 +4,8 @@ import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 import RestaurantsScreenStacks from './stacks/RestaurantsStacks'
-import TopRestaurantsScreenStack from './stacks/TopRestaurantsStacks'
+import FavoritesScreenStacks from './stacks/FavoritesStacks'
+import TopRestaurantsScreenStacks from './stacks/TopRestaurantsStacks'
 import SearchScreenStacks from './stacks/SearchStacks'
 import AccountScreenStacks from './stacks/AccountStacks'
 
@@ -23,10 +24,23 @@ const NavigationStacks = createBottomTabNavigator(
         )
       })
     },
-    TopRestaurants: {
-      screen: TopRestaurantsScreenStack,
+    Favorites: {
+      screen: FavoritesScreenStacks,
       navigationOptions: () => ({
-        tabBarLabel: 'Ranking',
+        tabBarLabel: 'Favs',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name='favorite'
+            size={22}
+            color={tintColor}
+          />
+        )
+      })
+    },
+    TopRestaurants: {
+      screen: TopRestaurantsScreenStacks,
+      navigationOptions: () => ({
+        tabBarLabel: 'Top 5',
         tabBarIcon: ({ tintColor }) => (
           <Icon
             name='star'
@@ -67,6 +81,7 @@ const NavigationStacks = createBottomTabNavigator(
     initialRouteName: 'Restaurants',
     order: [
       'Restaurants',
+      'Favorites',
       'TopRestaurants',
       'Search',
       'Account'

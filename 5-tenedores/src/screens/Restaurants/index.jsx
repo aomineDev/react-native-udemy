@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import ActionButton from 'react-native-action-button'
+import { Text } from 'react-native'
 import * as firebase from 'firebase'
+
+import RestaurantWrapper from 'layouts/Restaurants/RestaurantWrapper'
+import AddRestaurantButton from '../../components/Restaurant/AddRestaurantButton'
 
 export default function Restaurant ({ navigation }) {
   const [user, setUser] = useState(null)
@@ -13,22 +15,9 @@ export default function Restaurant ({ navigation }) {
   })
 
   return (
-    <View style={styles.viewBody}>
+    <RestaurantWrapper>
       <Text>Estamos en Restaurantes.</Text>
       {user && <AddRestaurantButton navigation={navigation} />}
-    </View>
+    </RestaurantWrapper>
   )
 }
-
-const AddRestaurantButton = ({ navigation }) => (
-  <ActionButton
-    buttonColor='#00a680'
-    onPress={() => navigation.navigate('AddRestaurant')}
-  />
-)
-
-const styles = StyleSheet.create({
-  viewBody: {
-    flex: 1
-  }
-})

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import { ListItem } from 'react-native-elements'
 
-import ModalWrapper from 'layouts/Account/ModalWrapper'
+import ModalWrapper from 'layouts/ModalWrapper'
 import EditDisplayNameForm from '../EditDisplayNameForm'
 import EditEmailForm from '../EditEmailForm'
 import EditPasswordForm from '../EditPasswordForm'

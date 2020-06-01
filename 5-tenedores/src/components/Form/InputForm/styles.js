@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
   inputEditForm: {
     width: '100%',
     marginBottom: 20
+  },
+  textArea: {
+    height: 100
   }
 })
 

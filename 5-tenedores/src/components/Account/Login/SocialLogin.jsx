@@ -7,7 +7,7 @@ import {
   LoginUserWithGoogleCredentials
 } from 'utils/FireBase/socialAuth'
 
-import SocialLoginButton from '../SocialLoginButton'
+import SocialLoginButton from './SocialLoginButton'
 
 export default function SocialLogin ({
   redirect,

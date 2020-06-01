@@ -1,14 +1,15 @@
 import React from 'react'
-
-import Router from 'routes/router'
+import { YellowBox } from 'react-native'
 
 // eslint-disable-next-line no-unused-vars
-import { firebaseApp } from 'utils/FireBase'
+import firebase from 'utils/FireBase'
 
-import 'utils/settingATimer'
+import Navigation from 'routes/router'
+
+YellowBox.ignoreWarnings(['Setting a timer'])
 
 function App () {
-  return <Router />
+  return <Navigation />
 }
 
 export default App
