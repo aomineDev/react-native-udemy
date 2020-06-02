@@ -10,7 +10,7 @@ import {
 import SocialLoginButton from './SocialLoginButton'
 
 export default function SocialLogin ({
-  redirect,
+  navigate,
   setIsDisabled,
   toggleAwaitRequest,
   isDisabled,
@@ -26,7 +26,7 @@ export default function SocialLogin ({
       if (type === 'success') {
         toggleAwaitRequest(true, 'facebook')
         await LoginUserWithFacebookCredentials(token)
-        redirect()
+        navigate()
       } else {
         toggleAwaitRequest(false, 'facebook')
       }
@@ -44,7 +44,7 @@ export default function SocialLogin ({
       if (type === 'success') {
         toggleAwaitRequest(true, 'google')
         await LoginUserWithGoogleCredentials(idToken, accessToken)
-        redirect()
+        navigate()
       } else {
         toggleAwaitRequest(false, 'google')
       }

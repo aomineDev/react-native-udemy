@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, Text, Image } from 'react-native'
-import { withNavigation } from 'react-navigation'
+// import { withNavigation } from 'react-navigation'
 
 import RedirectionButton from 'components/Account/UserGuest/RedirectionButton'
 
@@ -27,4 +27,5 @@ function UserGuest ({ navigation }) {
   )
 }
 
-export default withNavigation(UserGuest)
+// export default withNavigation(UserGuest)
+export default UserGuest

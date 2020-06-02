@@ -8,7 +8,7 @@ import InputForm from 'components/Form/InputForm'
 import ButtonForm from 'components/Form/ButtonForm'
 
 export default function Form ({
-  redirect,
+  navigate,
   toggleAwaitRequest,
   disabled,
   loading,
@@ -45,7 +45,7 @@ export default function Form ({
 
     toggleAwaitRequest(true)
     loginUser(email, password)
-      .then(() => redirect())
+      .then(() => navigate())
       .catch(error => {
         toastRef.current.show(error.message, 1000)
         toggleAwaitRequest(false)

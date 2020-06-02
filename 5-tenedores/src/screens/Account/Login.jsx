@@ -37,15 +37,15 @@ function Login ({ navigation }) {
     setIsLoading(value)
   }
 
-  function redirectTo (route) {
-    navigation.navigate(route)
+  function navigateTo (destiny) {
+    navigation.navigate(destiny)
   }
 
   return (
     <LogoWrapper>
       <FormWrapper>
         <Form
-          redirect={() => redirectTo('Account')}
+          navigate={() => navigateTo('Account')}
           toggleAwaitRequest={toggleAwaitRequest}
           disabled={isDisabled}
           loading={isLoading}
@@ -54,13 +54,13 @@ function Login ({ navigation }) {
       </FormWrapper>
       <View style={globalStyles.container}>
         <CreateAccount
-          onPress={() => redirectTo('Register')}
+          onPress={() => navigateTo('Register')}
         />
       </View>
       <Divider />
       <View style={globalStyles.container}>
         <SocialLogin
-          redirect={() => redirectTo('Account')}
+          navigate={() => navigateTo('Account')}
           setIsDisabled={setIsDisabled}
           toggleAwaitRequest={toggleAwaitRequest}
           isDisabled={isDisabled}

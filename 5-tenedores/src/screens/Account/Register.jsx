@@ -14,7 +14,7 @@ function Register ({ navigation }) {
     <LogoWrapper>
       <FormWrapper>
         <Form
-          redirect={() => navigation.navigate('Account')}
+          navigate={() => navigation.navigate('Account')}
           toastRef={toastRef}
         />
       </FormWrapper>

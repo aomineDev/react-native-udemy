@@ -9,6 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+secret.txt
 
 # macOS
 .DS_Store
