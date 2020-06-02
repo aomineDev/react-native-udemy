@@ -19,7 +19,7 @@ import styles from './styles'
 
 const db = firebase.firestore()
 
-export default function Form ({ toastRef, setIsLoading, redirect }) {
+export default function Form ({ toastRef, setIsLoading, navigateTo }) {
   const [imagesSelected, setImageSelected] = useState([])
   const [restaurantName, setRestaurantName] = useInputValue('')
   const [restaurantAddress, setRestaurantAddress] = useInputValue('')
@@ -52,7 +52,7 @@ export default function Form ({ toastRef, setIsLoading, redirect }) {
           })
             .then(() => {
               setIsLoading(false)
-              redirect.navigate('Restaurants')
+              navigateTo('Restaurants')
             })
             .catch(() => {
               setIsLoading(false)

@@ -8,8 +8,6 @@ import UserDetails from 'components/Account/UserLogged/UserDetails'
 import Loading from 'components/Shared/Loading'
 import Toast from 'components/Shared/Toast'
 
-// import styles from './styles'
-
 export default function UserLogged () {
   const toastRef = useRef()
 

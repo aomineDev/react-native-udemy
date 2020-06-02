@@ -45,7 +45,7 @@ function Login ({ navigation }) {
     <LogoWrapper>
       <FormWrapper>
         <Form
-          navigate={() => navigateTo('Account')}
+          navigateTo={navigateTo}
           toggleAwaitRequest={toggleAwaitRequest}
           disabled={isDisabled}
           loading={isLoading}
@@ -60,7 +60,7 @@ function Login ({ navigation }) {
       <Divider />
       <View style={globalStyles.container}>
         <SocialLogin
-          navigate={() => navigateTo('Account')}
+          navigateTo={navigateTo}
           setIsDisabled={setIsDisabled}
           toggleAwaitRequest={toggleAwaitRequest}
           isDisabled={isDisabled}
