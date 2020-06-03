@@ -1,45 +1,52 @@
 import * as firebase from 'firebase/app'
 
-export function updateAvatar (update) {
-  return new Promise((resolve, reject) => {
-    firebase
+export async function updateAvatar (updateData) {
+  try {
+    await firebase
       .auth()
       .currentUser
-      .updateProfile(update)
-      .then(() => resolve('Avatar actualizado'))
-      .catch(error => reject(error))
-  })
+      .updateProfile(updateData)
+
+    return 'Avatar actualizado'
+  } catch (error) {
+    return new Error('Ocurrio un error, intentelo más tarde')
+  }
 }
 
-export function updateDisplayName (update) {
-  return new Promise((resolve, reject) => {
-    firebase
+export async function updateDisplayName (displayName) {
+  try {
+    await firebase
       .auth()
       .currentUser
-      .updateProfile(update)
-      .then(() => resolve('Nombre de usuario actualizado'))
-      .catch(error => reject(error))
-  })
+      .updateProfile(displayName)
+
+    return 'Nombre de usuario actualizado'
+  } catch (error) {
+    return new Error('Ocurrio un error, intentelo más tarde')
+  }
 }
 
-export function updateEmail (email) {
-  return new Promise((resolve, reject) => {
-    firebase
+export async function updateEmail (email) {
+  try {
+    await firebase
       .auth()
       .currentUser
       .updateEmail(email)
-      .then(() => resolve('Email actualizado'))
-      .catch(error => reject(error))
-  })
+
+    return 'Email actualizado'
+  } catch (error) {
+    return new Error('Ocurrio un error, intentelo más tarde')
+  }
 }
 
-export function updatePassword (password) {
-  return new Promise((resolve, reject) => {
-    firebase
+export async function updatePassword (password) {
+  try {
+    await firebase
       .auth()
       .currentUser
       .updatePassword(password)
-      .then(() => resolve('Contraseña actualizada'))
-      .catch(error => reject(error))
-  })
+    return 'Contraseña actualizada'
+  } catch (error) {
+    return new Error('Ocurrio un error, intentelo más tarde')
+  }
 }

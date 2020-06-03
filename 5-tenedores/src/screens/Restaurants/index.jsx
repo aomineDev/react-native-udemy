@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 import * as firebase from 'firebase'
 
 import RestaurantWrapper from 'layouts/Restaurants/RestaurantWrapper'
-import AddRestaurantButton from 'components/Restaurant/AddRestaurantButton'
+import AddRestaurantButton from '../../components/Shared/AddFloatingButton'
 
 export default function Restaurant ({ navigation }) {
   const [user, setUser] = useState(null)
@@ -21,7 +21,7 @@ export default function Restaurant ({ navigation }) {
   return (
     <RestaurantWrapper>
       <Text>Estamos en Restaurantes.</Text>
-      {user && <AddRestaurantButton navigateTo={navigateTo} />}
+      {user && <AddRestaurantButton navigateTo={navigateTo} destiny='AddRestaurant' />}
     </RestaurantWrapper>
   )
 }

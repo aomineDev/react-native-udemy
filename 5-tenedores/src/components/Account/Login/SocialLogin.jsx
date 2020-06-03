@@ -1,10 +1,10 @@
 import React from 'react'
 
 import {
+  facebookPermissions,
   loginUserWithFacebook,
-  LoginUserWithFacebookCredentials,
-  loginUserWithGoogle,
-  LoginUserWithGoogleCredentials
+  googlePermissions,
+  loginUserWithGoogle
 } from 'utils/FireBase/socialAuth'
 
 import SocialLoginButton from './SocialLoginButton'
@@ -21,11 +21,11 @@ export default function SocialLogin ({
   async function handleFacebookButtonPress () {
     try {
       setIsDisabled(true)
-      const { type, token } = await loginUserWithFacebook()
+      const { type, token } = await facebookPermissions()
 
       if (type === 'success') {
         toggleAwaitRequest(true, 'facebook')
-        await LoginUserWithFacebookCredentials(token)
+        await loginUserWithFacebook(token)
         navigateTo('Account')
       } else {
         toggleAwaitRequest(false, 'facebook')
@@ -39,11 +39,11 @@ export default function SocialLogin ({
   async function handleGooleButtonPress () {
     try {
       setIsDisabled(true)
-      const { type, idToken, accessToken } = await loginUserWithGoogle()
+      const { type, idToken, accessToken } = await googlePermissions()
 
       if (type === 'success') {
         toggleAwaitRequest(true, 'google')
-        await LoginUserWithGoogleCredentials(idToken, accessToken)
+        await loginUserWithGoogle(idToken, accessToken)
         navigateTo('Account')
       } else {
         toggleAwaitRequest(false, 'google')

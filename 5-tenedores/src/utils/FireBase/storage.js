@@ -1,31 +1,33 @@
 import * as firebase from 'firebase/app'
 
-export async function uploadAvatar (uri, nameImage) {
+export async function uploadImage (root, uri, uid) {
   try {
     const response = await window.fetch(uri)
     const blob = await response.blob()
     const ref = firebase
       .storage()
-      .ref('avatar')
-      .child(nameImage)
+      .ref(root)
+      .child(uid)
+
     return ref.put(blob)
   } catch (error) {
-    return new Error('Error al subir el avatar')
+    return new Error('Error al subir la imagen')
   }
 }
 
-export function updatePhotoUrl (uid) {
-  return new Promise((resolve, reject) => {
-    firebase
+export async function getPhotoUrl (root, uid) {
+  try {
+    const data = await firebase
       .storage()
-      .ref(`avatar/${uid}`)
+      .ref(`${root}/${uid}`)
       .getDownloadURL()
-      .then(result => {
-        const update = {
-          photoURL: result
-        }
-        resolve(update)
-      })
-      .catch(() => reject(new Error('Error al obtener el avatar')))
-  })
+
+    const update = {
+      photoURL: data
+    }
+
+    return update
+  } catch (error) {
+    return new Error('Error al obtener el avatar')
+  }
 }

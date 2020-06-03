@@ -5,9 +5,13 @@ import Loading from 'components/Shared/Loading'
 import Form from 'components/Restaurant/AddRestaurant/Form'
 import Toast from 'components/Shared/Toast'
 
-export default function AddRestaurant ({ navigateTo }) {
+export default function AddRestaurant ({ navigation }) {
   const toastRef = useRef()
   const [isLoading, setIsLoading] = useState(false)
+
+  function navigateTo (destiny) {
+    navigation.navigate(destiny)
+  }
 
   return (
     <View>

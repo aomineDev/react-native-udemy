@@ -1,5 +1,20 @@
 import * as firebase from 'firebase/app'
 
+export async function getCurrentUser () {
+  try {
+    const { displayName, email, photoURL, uid } = await firebase.auth().currentUser
+
+    return {
+      displayName,
+      email,
+      photoURL,
+      uid
+    }
+  } catch (error) {
+    return new Error('Ocurrio un error, intentelo más tarde')
+  }
+}
+
 export function registerUser (email, password) {
   return new Promise((resolve, reject) => {
     firebase
@@ -10,7 +25,7 @@ export function registerUser (email, password) {
   })
 }
 
-export function loginUser (email, password) {
+export async function loginUser (email, password) {
   return new Promise((resolve, reject) => {
     firebase
       .auth()
@@ -25,24 +40,6 @@ export function reloginUser (password) {
   const credentials = firebase.auth.EmailAuthProvider.credential(user.email, password)
 
   return user.reauthenticateWithCredential(credentials)
-}
-
-export function getCurrentUser () {
-  return new Promise((resolve, reject) => {
-    (async () => {
-      try {
-        const { displayName, email, photoURL, uid } = await firebase.auth().currentUser
-        resolve({
-          displayName,
-          email,
-          photoURL,
-          uid
-        })
-      } catch (error) {
-        reject(error)
-      }
-    })()
-  })
 }
 
 export function signOutUser () {

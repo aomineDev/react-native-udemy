@@ -3,25 +3,21 @@ import * as Facebook from 'expo-facebook'
 import * as Google from 'expo-google-app-auth'
 import { FacebookApi, GoogleApi } from 'config/social'
 
-export function loginUserWithFacebook () {
-  return new Promise((resolve, reject) => {
-    (async () => {
-      try {
-        await Facebook.initializeAsync(FacebookApi.appId)
+export async function facebookPermissions () {
+  try {
+    await Facebook.initializeAsync(FacebookApi.appId)
 
-        const response = await Facebook.logInWithReadPermissionsAsync({
-          permissions: FacebookApi.permissions
-        })
+    const response = await Facebook.logInWithReadPermissionsAsync({
+      permissions: FacebookApi.permissions
+    })
 
-        resolve(response)
-      } catch (error) {
-        reject(new Error('Ocurrio un error, inténtelo más tarde'))
-      }
-    })()
-  })
+    return response
+  } catch (error) {
+    return new Error('Ocurrio un error, inténtelo más tarde')
+  }
 }
 
-export function LoginUserWithFacebookCredentials (token) {
+export function loginUserWithFacebook (token) {
   return new Promise((resolve, reject) => {
     const credentials = firebase.auth.FacebookAuthProvider.credential(token)
 
@@ -39,21 +35,17 @@ export function LoginUserWithFacebookCredentials (token) {
   })
 }
 
-export function loginUserWithGoogle () {
-  return new Promise((resolve, reject) => {
-    (async () => {
-      try {
-        const response = await Google.logInAsync(GoogleApi.config)
+export async function googlePermissions () {
+  try {
+    const response = await Google.logInAsync(GoogleApi.config)
 
-        resolve(response)
-      } catch (error) {
-        reject(new Error('Ocurrio un error, inténtelo más tarde'))
-      }
-    })()
-  })
+    return response
+  } catch (error) {
+    return new Error('Ocurrio un error, inténtelo más tarde')
+  }
 }
 
-export function LoginUserWithGoogleCredentials (idToken, accessToken) {
+export function loginUserWithGoogle (idToken, accessToken) {
   return new Promise((resolve, reject) => {
     const credentials = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken)
 

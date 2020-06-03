@@ -8,8 +8,6 @@ import Navigation from 'routes/router'
 
 YellowBox.ignoreWarnings(['Setting a timer'])
 
-function App () {
+export default function App () {
   return <Navigation />
 }
-
-export default App

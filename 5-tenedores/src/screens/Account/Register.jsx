@@ -10,11 +10,15 @@ import Toast from 'components/Shared/Toast'
 function Register ({ navigation }) {
   const toastRef = useRef()
 
+  function navigateTo (destiny) {
+    navigation.navigate(destiny)
+  }
+
   return (
     <LogoWrapper>
       <FormWrapper>
         <Form
-          navigate={() => navigation.navigate('Account')}
+          navigateTo={navigateTo}
           toastRef={toastRef}
         />
       </FormWrapper>

@@ -3,13 +3,13 @@ import { Icon } from 'react-native-elements'
 
 import styles from './styles'
 
-export default function AddRestaurantButton ({ navigation }) {
+export default function AddFloatingButton ({ navigateTo, destiny }) {
   return (
     <Icon
       reverse
       name='add'
       color='#00a680'
-      onPress={() => navigation.navigate('AddRestaurant')}
+      onPress={() => navigateTo(destiny)}
       containerStyle={styles.btnContainer}
     />
   )

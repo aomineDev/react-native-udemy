@@ -1,12 +1,11 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  viewForm: {
-    marginRight: 10,
-    marginLeft: 10
-  },
-  viewFormBtn: {
-    marginLeft: 20
+  viewImages: {
+    flexDirection: 'row',
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 30
   }
 })
 

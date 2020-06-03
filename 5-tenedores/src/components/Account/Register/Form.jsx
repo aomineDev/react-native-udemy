@@ -7,7 +7,7 @@ import { useInputValue } from 'hooks/useInputValue'
 import InputForm from 'components/Form/InputForm'
 import ButtonForm from 'components/Form/ButtonForm'
 
-export default function Form ({ navigate, toastRef }) {
+export default function Form ({ navigateTo, toastRef }) {
   const [email, setEmail] = useInputValue('')
   const [password, setPassword] = useInputValue('')
   const [repeatPassword, setRepeatPassword] = useInputValue('')
@@ -48,7 +48,7 @@ export default function Form ({ navigate, toastRef }) {
 
     toggleAwaitRequest(true)
     registerUser(email, password)
-      .then(message => toastRef.current.show(message, 500, () => navigate()))
+      .then(message => toastRef.current.show(message, 500, () => navigateTo('Account')))
       .catch(error => {
         toastRef.current.show(error.message, 1000)
         toggleAwaitRequest(false)
