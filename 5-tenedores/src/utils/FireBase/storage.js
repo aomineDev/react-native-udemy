@@ -1,12 +1,12 @@
 import * as firebase from 'firebase'
 
-export async function uploadImage (root, uri, uid) {
+export async function uploadImage (collection, uri, uid) {
   try {
     const response = await window.fetch(uri)
     const blob = await response.blob()
     const ref = firebase
       .storage()
-      .ref(root)
+      .ref(collection)
       .child(uid)
 
     return ref.put(blob)
@@ -15,11 +15,11 @@ export async function uploadImage (root, uri, uid) {
   }
 }
 
-export async function getPhotoUrl (root, uid) {
+export async function getPhotoUrl (collection, uid) {
   try {
     const data = await firebase
       .storage()
-      .ref(`${root}/${uid}`)
+      .ref(`${collection}/${uid}`)
       .getDownloadURL()
 
     const update = {

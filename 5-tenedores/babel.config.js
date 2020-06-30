@@ -13,7 +13,7 @@ module.exports = function (api) {
             config: './src/config',
             hooks: './src/hooks',
             layouts: './src/layouts',
-            routes: './src/routes',
+            navigation: './src/navigation',
             screens: './src/screens',
             utils: './src/utils'
           }

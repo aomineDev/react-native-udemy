@@ -46,7 +46,7 @@ export default function Form ({
     toggleAwaitRequest(true)
     loginUser(email, password)
       .then(() => {
-        navigateTo('Account')
+        navigateTo('account')
       })
       .catch(error => {
         toastRef.current.show(error.message, 1000)

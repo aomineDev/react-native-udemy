@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import globalStyles from '../../../../assets/styles/globalStyles'
+import globalStyles from 'assets/styles/globalStyles'
 
 const styles = StyleSheet.create({
   btnStyle: {
@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     width: '70%'
   },
   viewBtn: {
-    flex: 1,
     alignItems: 'center'
   }
 })

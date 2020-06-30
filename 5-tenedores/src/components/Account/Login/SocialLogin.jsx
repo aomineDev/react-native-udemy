@@ -26,7 +26,7 @@ export default function SocialLogin ({
       if (type === 'success') {
         toggleAwaitRequest(true, 'facebook')
         await loginUserWithFacebook(token)
-        navigateTo('Account')
+        navigateTo('account')
       } else {
         toggleAwaitRequest(false, 'facebook')
       }
@@ -44,7 +44,7 @@ export default function SocialLogin ({
       if (type === 'success') {
         toggleAwaitRequest(true, 'google')
         await loginUserWithGoogle(idToken, accessToken)
-        navigateTo('Account')
+        navigateTo('account')
       } else {
         toggleAwaitRequest(false, 'google')
       }

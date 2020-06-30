@@ -1,14 +1,16 @@
 import React from 'react'
 import { ScrollView, Text, Image } from 'react-native'
-import { withNavigation } from 'react-navigation'
+import { useNavigation } from '@react-navigation/native'
 
 import RedirectionButton from 'components/Account/UserGuest/RedirectionButton'
 
 import styles from './styes'
 
-function UserGuest ({ navigation }) {
+export default function UserGuest () {
+  const navigation = useNavigation()
+
   function navigateTo () {
-    navigation.navigate('Login')
+    navigation.navigate('login')
   }
 
   return (
@@ -30,6 +32,3 @@ function UserGuest ({ navigation }) {
     </ScrollView>
   )
 }
-
-export default withNavigation(UserGuest)
-// export default UserGuest

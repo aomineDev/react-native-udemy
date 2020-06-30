@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
 import * as firebase from 'firebase'
 
-import RestaurantWrapper from 'layouts/Restaurants/RestaurantWrapper'
-import Restaurants from 'components/Restaurant/Restaurants'
-import AddFloatingButton from 'components/Shared/AddFloatingButton'
+import { getAllData } from 'utils/FireBase/firestore'
+import { getLimitRestaurants, getMoreRestaurants } from 'utils/FireBase/restaurants'
 
-const db = firebase.firestore()
+import RestaurantWrapper from 'layouts/Restaurants/RestaurantWrapper'
+import ListOfRestaurants from 'components/Restaurants/ListOfRestaurants'
+import AddFloatingButton from 'components/Shared/AddFloatingButton'
 
 export default function Restaurant ({ navigation }) {
   const [user, setUser] = useState(null)
@@ -13,7 +15,7 @@ export default function Restaurant ({ navigation }) {
   const [totalRestaurants, setTotalRestaurants] = useState(0)
   const [startRestaurants, setStartRestaurants] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  const limitRestaurants = 10
+  const limitRestaurants = 8
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -21,29 +23,29 @@ export default function Restaurant ({ navigation }) {
     })
   })
 
-  useEffect(() => {
-    db.collection('restaurants').get().then(snap => {
-      setTotalRestaurants(snap.size)
-    })
-
-    const resultRestaurants = []
-
-    db.collection('restaurants')
-      .orderBy('createAt', 'desc')
-      .limit(limitRestaurants)
-      .get()
-      .then(response => {
-        setStartRestaurants(response.docs[response.docs.length - 1])
-
-        response.forEach(querySnapshot => {
-          const restaurant = querySnapshot.data()
-          restaurant.id = querySnapshot.id
-          resultRestaurants.push(restaurant)
+  useFocusEffect(
+    useCallback(() => {
+      getAllData('restaurants')
+        .then(snap => {
+          setTotalRestaurants(snap.size)
         })
 
-        setRestaurants(resultRestaurants)
-      })
-  }, [])
+      const resultRestaurants = []
+
+      getLimitRestaurants(limitRestaurants)
+        .then(querySnapshot => {
+          setStartRestaurants(querySnapshot.docs[querySnapshot.docs.length - 1])
+
+          querySnapshot.forEach(doc => {
+            const restaurant = doc.data()
+            restaurant.id = doc.id
+            resultRestaurants.push(restaurant)
+          })
+
+          setRestaurants(resultRestaurants)
+        })
+    }, [])
+  )
 
   function handleLoadMore () {
     if (restaurants.length === totalRestaurants) {
@@ -54,17 +56,13 @@ export default function Restaurant ({ navigation }) {
 
     const resultRestaurants = []
 
-    db.collection('restaurants')
-      .orderBy('createAt', 'desc')
-      .startAfter(startRestaurants.data().createAt)
-      .limit(limitRestaurants)
-      .get()
-      .then(response => {
-        setStartRestaurants(response.docs[response.docs.length - 1])
+    getMoreRestaurants(startRestaurants, limitRestaurants)
+      .then(querySnapshot => {
+        setStartRestaurants(querySnapshot.docs[querySnapshot.docs.length - 1])
 
-        response.forEach(querySnapshot => {
-          const restaurant = querySnapshot.data()
-          restaurant.id = querySnapshot.id
+        querySnapshot.forEach(doc => {
+          const restaurant = doc.data()
+          restaurant.id = doc.id
           resultRestaurants.push(restaurant)
         })
 
@@ -73,12 +71,12 @@ export default function Restaurant ({ navigation }) {
   }
 
   function navigateTo () {
-    navigation.navigate('AddRestaurant')
+    navigation.navigate('addRestaurant')
   }
 
   return (
     <RestaurantWrapper>
-      <Restaurants
+      <ListOfRestaurants
         restaurants={restaurants}
         handleLoadMore={handleLoadMore}
         isLoading={isLoading}

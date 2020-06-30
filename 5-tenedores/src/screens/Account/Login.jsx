@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
 import { View } from 'react-native'
-import { withNavigation } from 'react-navigation'
 
 import LogoWrapper from 'layouts/Account/LogoWrapper'
 import FormWrapper from 'layouts/Account/FormWrapper'
@@ -13,7 +12,7 @@ import Toast from 'components/Shared/Toast'
 
 import globalStyles from 'assets/styles/globalStyles'
 
-function Login ({ navigation }) {
+export default function Login ({ navigation }) {
   const toastRef = useRef()
 
   const [isDisabled, setIsDisabled] = useState(false)
@@ -54,7 +53,7 @@ function Login ({ navigation }) {
       </FormWrapper>
       <View style={globalStyles.container}>
         <CreateAccount
-          onPress={() => navigateTo('Register')}
+          onPress={() => navigateTo('register')}
         />
       </View>
       <Divider />
@@ -76,5 +75,3 @@ function Login ({ navigation }) {
     </LogoWrapper>
   )
 }
-
-export default withNavigation(Login)

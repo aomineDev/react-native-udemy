@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as firebase from 'firebase'
 
-import LoadingPage from 'components/Shared/LoadingPage'
+import LoaderScreen from 'components/Shared/LoaderScreen'
 import UserGuest from './UserGuest'
 import UserLogged from './UserLogged'
 
@@ -14,7 +14,7 @@ export default function Account () {
     })
   }, [])
 
-  if (login === null) return <LoadingPage text='Cargando...' />
+  if (login === null) return <LoaderScreen text='Cargando...' />
 
   return login ? <UserLogged /> : <UserGuest />
 }

@@ -5,14 +5,14 @@ import { signOutUser, getCurrentUser } from 'utils/FireBase/auth'
 import SignOutButton from 'components/Account/UserLogged/SignOutButton'
 import UserProfile from 'components/Account/UserLogged/UserProfile'
 import UserDetails from 'components/Account/UserLogged/UserDetails'
-import Loading from 'components/Shared/Loading'
+import Loader from 'components/Shared/Loader'
 import Toast from 'components/Shared/Toast'
 
 export default function UserLogged () {
   const toastRef = useRef()
 
   const [user, setUser] = useState({})
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function UserLogged () {
   }, [reload])
 
   function toggleAwaitResponse (value) {
-    setLoading(value)
+    setIsLoading(value)
     if (!value) setReload(!value)
   }
 
@@ -53,7 +53,7 @@ export default function UserLogged () {
         toastRef={toastRef}
         position='bottom'
       />
-      <Loading isVisible={loading} />
+      <Loader isVisible={isLoading} />
     </>
   )
 }
