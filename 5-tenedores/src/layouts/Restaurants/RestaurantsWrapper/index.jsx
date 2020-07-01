@@ -3,9 +3,9 @@ import { View } from 'react-native'
 
 import styles from './styles'
 
-export default function EditFormWrapper ({ children }) {
+export default function RestaurantsWrapper ({ children }) {
   return (
-    <View style={styles.viewForm}>
+    <View style={styles.viewRestaurants}>
       {children}
     </View>
   )

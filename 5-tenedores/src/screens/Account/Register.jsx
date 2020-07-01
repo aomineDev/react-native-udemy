@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import LogoWrapper from 'layouts/Account/LogoWrapper'
 import FormWrapper from 'layouts/Account/FormWrapper'
 
-import Form from 'components/Account/Register/Form'
+import Form from 'components/Account/Screens/Register/Form'
 import Toast from 'components/Shared/Toast'
 
 export default function Register ({ navigation }) {

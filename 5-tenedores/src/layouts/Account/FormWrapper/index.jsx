@@ -5,7 +5,7 @@ import styles from './styles'
 
 export default function FormWrapper ({ children }) {
   return (
-    <View style={styles.formContainer}>
+    <View style={styles.viewForm}>
       {children}
     </View>
   )

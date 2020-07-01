@@ -17,6 +17,8 @@ export function getAllData (collection) {
     .get()
 }
 
-export function getData () {
-
+export function getData (collection, id) {
+  return db.collection(collection)
+    .doc(id)
+    .get()
 }

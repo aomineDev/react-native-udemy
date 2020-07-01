@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  viewRestaurant: {
+  formReview: {
     flex: 1,
-    backgroundColor: '#fff'
+    alignItems: 'center',
+    margin: 10,
+    marginTop: 40
   }
 })
 

@@ -2,9 +2,9 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import Restaurant from './Restaurant'
+import RestaurantItem from './RestaurantItem'
 import LoadMoreRestaurants from './LoadMoreRestaurants'
-import LoaderComponent from 'components/Shared/LoaderComponent'
+import LoaderScreen from 'components/Shared/LoaderScreen'
 
 export default function LitOfRestaurants ({ restaurants, handleLoadMore, isLoading }) {
   const navigation = useNavigation()
@@ -14,14 +14,14 @@ export default function LitOfRestaurants ({ restaurants, handleLoadMore, isLoadi
       {restaurants.length > 0 ? (
         <FlatList
           data={restaurants}
-          renderItem={(restaurant) => <Restaurant restaurant={restaurant} navigation={navigation} />}
+          renderItem={(restaurant) => <RestaurantItem restaurant={restaurant} navigation={navigation} />}
           keyExtractor={(item, index) => index.toString()}
           onEndReachedThreshold={0.1}
           onEndReached={handleLoadMore}
           ListFooterComponent={<LoadMoreRestaurants isLoading={isLoading} />}
         />
       ) : (
-        <LoaderComponent />
+        <LoaderScreen />
       )}
     </>
   )

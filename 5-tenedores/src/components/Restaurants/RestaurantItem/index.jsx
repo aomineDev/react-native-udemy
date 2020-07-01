@@ -4,7 +4,7 @@ import { Image } from 'react-native-elements'
 
 import styles from './styles'
 
-export default function Restaurant ({ restaurant, navigation }) {
+export default function RestaurantItem ({ restaurant, navigation }) {
   const {
     item: {
       id,

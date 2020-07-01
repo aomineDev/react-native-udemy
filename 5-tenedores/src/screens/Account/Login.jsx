@@ -4,9 +4,9 @@ import { View } from 'react-native'
 import LogoWrapper from 'layouts/Account/LogoWrapper'
 import FormWrapper from 'layouts/Account/FormWrapper'
 
-import Form from 'components/Account/Login/Form'
-import CreateAccount from 'components/Account/Login/CreateAccount'
-import SocialLogin from 'components/Account/Login/SocialLogin'
+import Form from 'components/Account/Screens/Login/Form'
+import CreateAccount from 'components/Account/Screens/Login/CreateAccount'
+import SocialLogin from 'components/Account/Screens/Login/SocialLogin'
 import Divider from 'components/Shared/Divider'
 import Toast from 'components/Shared/Toast'
 

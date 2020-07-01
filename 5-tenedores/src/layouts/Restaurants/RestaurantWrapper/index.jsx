@@ -1,12 +1,12 @@
 import React from 'react'
-import { View } from 'react-native'
+import { ScrollView } from 'react-native'
 
 import styles from './styles'
 
-export default function RestaurantWrapper ({ children }) {
+export default function RestauransWrapper ({ children }) {
   return (
-    <View style={styles.viewBody}>
+    <ScrollView style={styles.viewRestaurant}>
       {children}
-    </View>
+    </ScrollView>
   )
 }

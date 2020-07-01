@@ -5,9 +5,9 @@ import * as firebase from 'firebase'
 import { getAllData } from 'utils/FireBase/firestore'
 import { getLimitRestaurants, getMoreRestaurants } from 'utils/FireBase/restaurants'
 
-import RestaurantWrapper from 'layouts/Restaurants/RestaurantWrapper'
+import RestaurantsWrapper from 'layouts/Restaurants/RestaurantsWrapper'
 import ListOfRestaurants from 'components/Restaurants/ListOfRestaurants'
-import AddFloatingButton from 'components/Shared/AddFloatingButton'
+import FloatingButton from 'components/Shared/FloatingButton'
 
 export default function Restaurant ({ navigation }) {
   const [user, setUser] = useState(null)
@@ -71,17 +71,23 @@ export default function Restaurant ({ navigation }) {
   }
 
   function navigateTo () {
-    navigation.navigate('addRestaurant')
+    navigation.navigate('add-restaurant')
   }
 
   return (
-    <RestaurantWrapper>
+    <RestaurantsWrapper>
       <ListOfRestaurants
         restaurants={restaurants}
         handleLoadMore={handleLoadMore}
         isLoading={isLoading}
       />
-      {user && <AddFloatingButton navigateTo={navigateTo} />}
-    </RestaurantWrapper>
+      {user && (
+        <FloatingButton
+          onPress={navigateTo}
+          name='add'
+          color='#00a680'
+        />
+      )}
+    </RestaurantsWrapper>
   )
 }

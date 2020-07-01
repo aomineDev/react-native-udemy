@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { View } from 'react-native'
 
-import Form from 'components/Restaurants/AddRestaurant/Form'
+import Form from 'components/Restaurants/Screens/AddRestaurant/Form'
 import Toast from 'components/Shared/Toast'
 
 export default function AddRestaurant ({ navigation }) {
