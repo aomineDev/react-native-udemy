@@ -25,7 +25,7 @@ Aquí todo los recusos básicos que usaremos para este proyecto
 ### Node
 
 <div align="center" style="padding: 16px 0">
-  <img src="https://jaystack.com/wp-content/uploads/2015/12/nodejs-logo-e1497443346889.png" alt="img" width="200">
+  <img src="https://images.tutorialedge.net/images/node.png" alt="img" width="200">
 </div>
 
 Para instalarlo nos dirigimos a la web de [Node.js](https://nodejs.org/es/) y descargamos la versión LTS ya que es la versión estable pero tambien puedes instalar la versión más reciente pero ten en cuenta que pueden ocurrir bugs o errores.
