@@ -9,13 +9,16 @@ module.exports = function (api) {
         {
           alias: {
             assets: './src/assets',
+            cfs: './src/cfs',
             components: './src/components',
             config: './src/config',
+            fdc: './src/fdc',
             hooks: './src/hooks',
             layouts: './src/layouts',
             navigation: './src/navigation',
             screens: './src/screens',
-            utils: './src/utils'
+            utils: './src/utils',
+            wrappers: './src/wrappers'
           }
         }
       ]

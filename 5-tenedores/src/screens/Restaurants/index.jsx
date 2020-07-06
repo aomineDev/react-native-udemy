@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useFocusEffect } from '@react-navigation/native'
 import * as firebase from 'firebase'
 
-import { getAllData } from 'utils/FireBase/firestore'
-import { getLimitRestaurants, getMoreRestaurants } from 'utils/FireBase/restaurants'
+import { getAll } from 'utils/FireBase/firestore'
+import { getLimitRestaurants, getMoreRestaurants } from 'utils/FireBase/specifics/restaurants'
 
-import RestaurantsWrapper from 'layouts/Restaurants/RestaurantsWrapper'
-import ListOfRestaurants from 'components/Restaurants/ListOfRestaurants'
+import Wrapper from 'wrappers/Wrapper'
+import RestaurantsList from 'components/Restaurants/Screen/ListOfRestaurants'
 import FloatingButton from 'components/Shared/FloatingButton'
 
 export default function Restaurant ({ navigation }) {
@@ -17,20 +17,18 @@ export default function Restaurant ({ navigation }) {
   const [isLoading, setIsLoading] = useState(false)
   const limitRestaurants = 8
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      setUser(user)
-    })
+  firebase.auth().onAuthStateChanged(user => {
+    user ? setUser(true) : setUser(false)
   })
 
   useFocusEffect(
     useCallback(() => {
-      getAllData('restaurants')
+      getAll('restaurants')
         .then(snap => {
           setTotalRestaurants(snap.size)
         })
 
-      const resultRestaurants = []
+      const response = []
 
       getLimitRestaurants(limitRestaurants)
         .then(querySnapshot => {
@@ -39,10 +37,10 @@ export default function Restaurant ({ navigation }) {
           querySnapshot.forEach(doc => {
             const restaurant = doc.data()
             restaurant.id = doc.id
-            resultRestaurants.push(restaurant)
+            response.push(restaurant)
           })
 
-          setRestaurants(resultRestaurants)
+          setRestaurants(response)
         })
     }, [])
   )
@@ -75,8 +73,8 @@ export default function Restaurant ({ navigation }) {
   }
 
   return (
-    <RestaurantsWrapper>
-      <ListOfRestaurants
+    <Wrapper>
+      <RestaurantsList
         restaurants={restaurants}
         handleLoadMore={handleLoadMore}
         isLoading={isLoading}
@@ -85,9 +83,10 @@ export default function Restaurant ({ navigation }) {
         <FloatingButton
           onPress={navigateTo}
           name='add'
-          color='#00a680'
+          color='#fff'
+          backgroundColor='#00a680'
         />
       )}
-    </RestaurantsWrapper>
+    </Wrapper>
   )
 }

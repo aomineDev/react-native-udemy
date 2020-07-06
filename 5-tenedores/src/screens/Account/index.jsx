@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import * as firebase from 'firebase'
 
 import LoaderScreen from 'components/Shared/LoaderScreen'
@@ -6,15 +6,13 @@ import UserGuest from './UserGuest'
 import UserLogged from './UserLogged'
 
 export default function Account () {
-  const [login, setLogin] = useState(null)
+  const [isUserLogged, setIisUserLogged] = useState(null)
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      user ? setLogin(true) : setLogin(false)
-    })
-  }, [])
+  firebase.auth().onAuthStateChanged(user => {
+    user ? setIisUserLogged(true) : setIisUserLogged(false)
+  })
 
-  if (login === null) return <LoaderScreen text='Cargando...' />
+  if (isUserLogged === null) return <LoaderScreen text='Cargando...' />
 
-  return login ? <UserLogged /> : <UserGuest />
+  return isUserLogged ? <UserLogged /> : <UserGuest />
 }

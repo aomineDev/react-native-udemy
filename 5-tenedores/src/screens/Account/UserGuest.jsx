@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-import UserGuestWrapper from 'layouts/Account/UserGuestWrapper'
-import Content from 'components/Account/UserGuest/Content'
-import RedirectionButton from 'components/Account/UserGuest/RedirectionButton'
+import UserGuestWrapper from 'wrappers/Account/UserGuestWrapper'
+import Content from 'components/Account/Screen/UserGuest/Content'
+import RedirectionButton from 'components/Account/Screen/UserGuest/RedirectionButton'
 
 export default function UserGuest () {
   const navigation = useNavigation()

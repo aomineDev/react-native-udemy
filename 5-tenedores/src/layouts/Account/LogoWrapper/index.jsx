@@ -8,7 +8,7 @@ export default function LogoWrapper ({ children }) {
   return (
     <KeyboardAwareScrollView>
       <Image
-        source={require('../../../assets/img/5-tenedores-logo.png')}
+        source={require('assets/img/5-tenedores-logo.png')}
         style={styles.logo}
         resizeMode='contain'
       />

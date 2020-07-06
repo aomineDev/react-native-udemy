@@ -3,12 +3,12 @@ import { Icon } from 'react-native-elements'
 
 import styles from './styles'
 
-export default function FloatingButton (props) {
+export default function FloatingButton ({ backgroundColor, ...props }) {
   return (
     <Icon
       {...props}
-      reverse
-      containerStyle={styles.btnContainer}
+      size={32}
+      containerStyle={{ ...styles.containerIcon, backgroundColor }}
     />
   )
 }

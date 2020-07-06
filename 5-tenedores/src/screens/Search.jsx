@@ -1,10 +1,21 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useState } from 'react'
 
-const Search = () => (
-  <View>
-    <Text>Estamos en el navegador</Text>
-  </View>
-)
+import Wrapper from 'wrappers/Wrapper'
+import Bar from 'cfs/Search/Bar'
+import List from 'fdc/Search/List'
 
-export default Search
+export default function Search () {
+  const [search, setSearch] = useState('')
+
+  return (
+    <Wrapper>
+      <Bar
+        search={search}
+        setSearch={setSearch}
+      />
+      <List
+        search={search}
+      />
+    </Wrapper>
+  )
+}

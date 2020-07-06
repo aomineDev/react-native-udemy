@@ -1,10 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
 
-const TopRestaurants = () => (
-  <View>
-    <Text>Estamos en el ranking de restaurantes.</Text>
-  </View>
-)
+import Wrapper from 'wrappers/Wrapper'
+import List from 'fdc/TopRestaurants/List'
 
-export default TopRestaurants
+export default function TopRestaurants () {
+  return (
+    <Wrapper>
+      <List />
+    </Wrapper>
+  )
+}

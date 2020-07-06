@@ -14,7 +14,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#00a680"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -32,6 +32,8 @@
           "apiKey": "AIzaSyDnhJG2dYOOY9MyLQNbJ_3nw48XcP04RwA"
         }
       }
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/aomine1745/react-native-udemy"
   }
 }

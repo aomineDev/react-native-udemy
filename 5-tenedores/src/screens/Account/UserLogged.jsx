@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { View } from 'react-native'
 
 import { signOutUser, getCurrentUser } from 'utils/FireBase/auth'
 
-import SignOutButton from 'components/Account/UserLogged/SignOutButton'
-import UserProfile from 'components/Account/UserLogged/UserProfile'
-import UserDetails from 'components/Account/UserLogged/UserDetails'
+import SignOutButton from 'components/Account/Screen/UserLogged/SignOutButton'
+import UserProfile from 'components/Account/Screen/UserLogged/UserProfile'
+import UserDetails from 'components/Account/Screen/UserLogged/UserDetails'
 import Loader from 'components/Shared/Loader'
 import Toast from 'components/Shared/Toast'
 
@@ -16,11 +17,8 @@ export default function UserLogged () {
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
-    getCurrentUser()
-      .then(user => {
-        setUser(user)
-      })
-      .catch(error => toastRef.current.show(error.message, 1000))
+    const response = getCurrentUser()
+    setUser(response)
     setReload(false)
   }, [reload])
 
@@ -34,7 +32,7 @@ export default function UserLogged () {
   }
 
   return (
-    <>
+    <View>
       <UserProfile
         {...user}
         toggleAwaitResponse={toggleAwaitResponse}
@@ -54,6 +52,6 @@ export default function UserLogged () {
         position='bottom'
       />
       <Loader isVisible={isLoading} />
-    </>
+    </View>
   )
 }

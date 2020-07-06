@@ -1,17 +1,13 @@
 import * as firebase from 'firebase'
 
-export async function getCurrentUser () {
-  try {
-    const { displayName, email, photoURL, uid } = await firebase.auth().currentUser
+export function getCurrentUser () {
+  const { displayName, email, photoURL, uid } = firebase.auth().currentUser
 
-    return {
-      displayName,
-      email,
-      photoURL,
-      uid
-    }
-  } catch (error) {
-    return new Error('Ocurrio un error, intentelo más tarde')
+  return {
+    displayName,
+    email,
+    photoURL,
+    uid
   }
 }
 
