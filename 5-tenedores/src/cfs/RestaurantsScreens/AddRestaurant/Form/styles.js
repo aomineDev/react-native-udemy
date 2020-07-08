@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    flexGrow: 1
+  viewForm: {
+    marginRight: 10,
+    marginLeft: 10
   }
 })
 

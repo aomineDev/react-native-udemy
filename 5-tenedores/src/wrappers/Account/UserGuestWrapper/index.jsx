@@ -5,10 +5,7 @@ import styles from './styles'
 
 export default function UserGuestWrapper ({ children }) {
   return (
-    <View
-      style={styles.viewUserGuest}
-      centerContent
-    >
+    <View style={styles.viewUserGuest}>
       {children}
     </View>
   )

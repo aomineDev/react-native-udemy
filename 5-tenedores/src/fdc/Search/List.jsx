@@ -10,7 +10,10 @@ export default function RestaurantsList ({ search }) {
   const [restaurants, setRestaurants] = useState([])
 
   useEffect(() => {
-    if (!search) return
+    if (!search) {
+      setRestaurants([])
+      return
+    }
 
     fireSQL
       .query(`SELECT * FROM restaurants WHERE name LIKE '${search}%' ORDER BY name DESC`)

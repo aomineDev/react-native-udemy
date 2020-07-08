@@ -5,7 +5,7 @@ import styles from './styles'
 
 export default function AddReviewWrapper ({ children }) {
   return (
-    <ScrollView style={styles.viewAddReview} contentContainerStyle={{ flexGrow: 1 }}>
+    <ScrollView style={styles.viewAddReview} contentContainerStyle={styles.contentContainer}>
       {children}
     </ScrollView>
   )

@@ -8,6 +8,7 @@ export default function FloatingButton ({ backgroundColor, ...props }) {
     <Icon
       {...props}
       size={32}
+      underlayColor='transparent'
       containerStyle={{ ...styles.containerIcon, backgroundColor }}
     />
   )

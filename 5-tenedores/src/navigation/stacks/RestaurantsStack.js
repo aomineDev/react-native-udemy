@@ -2,9 +2,9 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import Restaurants from 'screens/Restaurants'
-import AddRestaurant from 'screens/Restaurants/AddRestaurant'
-import Restaurant from 'screens/Restaurants/Restaurant'
-import AddReview from 'screens/Restaurants/AddReview'
+import AddRestaurant from 'screens/RestaurantsScreens/AddRestaurant'
+import Restaurant from 'screens/RestaurantsScreens/Restaurant'
+import AddReview from 'screens/RestaurantsScreens/AddReview'
 
 const Stack = createStackNavigator()
 

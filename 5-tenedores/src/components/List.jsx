@@ -3,7 +3,15 @@ import { FlatList } from 'react-native'
 
 import ListFooter from 'components/ListFooter'
 
-export default function List ({ data, setData, toastRef, renderItem, handleLoadMore, isLoading }) {
+export default function List ({
+  data,
+  setData,
+  toastRef,
+  renderItem,
+  handleLoadMore,
+  isLoading,
+  isInfinityScroll
+}) {
   const RenderItem = renderItem
 
   function removeItem (property, value) {
@@ -11,7 +19,7 @@ export default function List ({ data, setData, toastRef, renderItem, handleLoadM
     setData(newItems)
   }
 
-  if (!isLoading) {
+  if (!isInfinityScroll) {
     return (
       <FlatList
         data={data}

@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { Image } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
+
 import { remove } from 'utils/FireBase/firestore'
 
 import FavIcon from '../FavIcon'
